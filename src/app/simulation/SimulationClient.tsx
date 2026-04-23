@@ -38,7 +38,7 @@ export default function SimulationClient() {
     setResults(null);
     setLogs([]);
     addLog("Initializing SmartAlloc AI Cluster...", "info");
-    addLog("Connecting to Google Gemini (2.0 Flash Lite)...", "tech");
+    addLog("Connecting to Google Gemini (3.1 Flash Lite)...", "tech");
 
     // Mock progress visual with detailed logs
     const logIntervals = [

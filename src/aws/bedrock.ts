@@ -2,8 +2,8 @@
 // Uses Google Gemini API for Gen AI reasoning (fully local)
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
-const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash-lite';
-const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
+const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-3.1-flash-lite-preview';
+const GEMINI_ENDPOINT = `https://generativelanguage.googleapis.com/v1alpha/models/${GEMINI_MODEL}:generateContent`;
 
 async function callGemini(prompt: string): Promise<string> {
   if (!GEMINI_API_KEY) {

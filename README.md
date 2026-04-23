@@ -45,7 +45,7 @@ Traditional resource management suffers from:
 │       ↓              ↓                  ↓                       │
 │  ┌──────────────────────────────────────────────┐              │
 │  │         GEN AI OPTIMIZATION ADVISOR           │              │
-│  │         (Google Gemini 2.0 Flash)             │              │
+│  │         (Google Gemini 3.1 Flash Lite)             │              │
 │  └──────────────────────────────────────────────┘              │
 │       ↓                                                         │
 │  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
@@ -68,7 +68,7 @@ Traditional resource management suffers from:
 | 1 | **Data Ingester** | Loads resource requests + capacity metrics | Local JSON stream |
 | 2 | **Allocation Analyzer** | ML-based anomaly detection (over/under-allocation) | Z-Score statistical engine |
 | 3 | **Demand Forecaster** | Predicts capacity bottlenecks 24–72h ahead | Moving-average trend extrapolation |
-| 4 | **Gen AI Advisor** | Natural-language optimization recommendations | Google Gemini 2.0 Flash |
+| 4 | **Gen AI Advisor** | Natural-language optimization recommendations | Google Gemini 3.1 Flash Lite |
 | 5 | **Priority Engine** | P1/P2/P3 urgency classification | Impact-weighted ranking |
 | 6 | **Auto-Rebalancer** | Executes P3 optimizations, queues P1/P2 | Autonomous execution engine |
 | 7 | **Decision Logger** | Immutable audit trail per run | Persistent JSON store |
@@ -90,7 +90,7 @@ Traditional resource management suffers from:
 - Outputs `hours_to_breach` and `overflow_units` per resource pool
 
 ### 🧠 Generative AI Advisor (Google Gemini)
-- Gemini 2.0 Flash produces **structured allocation advisory**
+- Gemini 3.1 Flash Lite produces **structured allocation advisory**
 - Natural-language **"Why this reallocation matters"** explanations
 - **Alternative strategies** ranked by efficiency
 - Department-specific, scenario-aware recommendations
@@ -119,7 +119,7 @@ Traditional resource management suffers from:
 | Layer | Technology | Purpose |
 |-------|-----------|---------|
 | **Orchestration** | LangGraph.js | Stateful multi-agent DAG execution |
-| **Gen AI** | Google Gemini 2.0 Flash | Optimization reasoning + NL recommendations |
+| **Gen AI** | Google Gemini 3.1 Flash Lite | Optimization reasoning + NL recommendations |
 | **ML Pipeline** | Custom TypeScript | Z-Score anomaly detection + demand forecasting |
 | **Frontend** | Next.js 14 (App Router) | SSR + API routes + real-time dashboard |
 | **UI** | Tailwind CSS + Framer Motion | Premium animations + responsive design |

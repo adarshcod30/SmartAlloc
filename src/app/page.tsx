@@ -50,7 +50,7 @@ const agents = [
     id: "reason", name: "Gen AI Advisor", icon: Brain, color: "from-cyan-500 to-teal-400",
     desc: "Google Gemini performs root-cause analysis on allocation inefficiencies — generating natural-language explanations of why resources should be reallocated and ranking alternative strategies.",
     vision: "Fine-tuned LLM with domain-specific resource management knowledge graphs, RAG retrieval over infrastructure policies, and multi-turn reasoning chains",
-    proto: "Google Gemini 2.0 Flash Lite with intelligent local fallback for real-time optimization reasoning, scenario-aware prompts ensuring unique analysis per run",
+    proto: "Google Gemini 3.1 Flash Lite with intelligent local fallback for real-time optimization reasoning, scenario-aware prompts ensuring unique analysis per run",
     metrics: { model: "Gemini 2.0", fallback: "Local AI", latency: "~1.5s" },
   },
   {
@@ -93,7 +93,7 @@ const capabilities = [
   {
     icon: Brain, title: "Gen AI Optimization Advisor",
     desc: "Gemini-powered reasoning that produces human-readable explanations of why resources should be reallocated and ranks alternative strategies.",
-    vision: "Fine-tuned LLM + knowledge graphs", proto: "Google Gemini 2.0 Flash Lite",
+    vision: "Fine-tuned LLM + knowledge graphs", proto: "Google Gemini 3.1 Flash Lite",
     detail: "Each analysis includes efficiency scores, contextual reasoning, alternative strategies, and risk assessment for transparent allocation decisions."
   },
   {
@@ -131,7 +131,7 @@ const capabilities = [
 /* ─── tech stack ─── */
 const techStack = [
   { name: "LangGraph.js", desc: "Stateful multi-agent orchestration with directed acyclic graph execution", icon: GitBranch },
-  { name: "Google Gemini", desc: "Gemini 2.0 Flash Lite for Gen AI optimization reasoning", icon: Brain },
+  { name: "Google Gemini", desc: "Gemini 3.1 Flash Lite for Gen AI optimization reasoning", icon: Brain },
   { name: "ML Pipeline", desc: "Z-Score anomaly detection + demand forecasting", icon: Database },
   { name: "Next.js 14", desc: "App Router with server-side rendering and API routes", icon: Globe },
   { name: "Framer Motion", desc: "Production-grade scroll-driven animations", icon: Layers },
@@ -141,7 +141,7 @@ const techStack = [
 /* ─── comparison data ─── */
 const comparisonRows = [
   { dimension: "Data Ingestion", vision: "Multi-region Kafka streams at 50K events/sec from K8s, HR, and cloud billing", proto: "Local JSON stream with 50+ synthetic resource requests per workload scenario" },
-  { dimension: "Intelligence Layer", vision: "Fine-tuned LLM clusters with domain-specific resource management knowledge graphs", proto: "Google Gemini 2.0 Flash Lite with intelligent local fallback for allocation reasoning" },
+  { dimension: "Intelligence Layer", vision: "Fine-tuned LLM clusters with domain-specific resource management knowledge graphs", proto: "Google Gemini 3.1 Flash Lite with intelligent local fallback for allocation reasoning" },
   { dimension: "ML Models", vision: "Ensemble Isolation Forest + Autoencoders with continuous retraining on utilization history", proto: "Statistical Z-Score anomaly detection + moving-average demand forecasting" },
   { dimension: "Automation", vision: "Direct Kubernetes + Terraform integration for automated infrastructure scaling", proto: "Autonomous rebalancing engine with local approval queue for critical shifts" },
   { dimension: "Scale", vision: "10K+ concurrent resource pools, sub-100ms P99 latency, multi-cluster", proto: "Local execution, ~2s end-to-end optimization with Gemini inference" },
@@ -310,7 +310,7 @@ export default function OverviewPage() {
                 {[
                   "Analyzes 50+ resource allocation requests per optimization run",
                   "7 specialized AI agents orchestrated by LangGraph.js state machine",
-                  "Google Gemini 2.0 Flash Lite for Gen AI optimization reasoning",
+                  "Google Gemini 3.1 Flash Lite for Gen AI optimization reasoning",
                   "ML-based Z-Score anomaly detection + demand forecasting",
                   "Auto-rebalance for routine optimizations, manager approval for critical shifts",
                 ].map((point, i) => (
@@ -327,7 +327,7 @@ export default function OverviewPage() {
                 <h3 className="text-xl font-black tracking-tight">System at a Glance</h3>
                 {[
                   { label: "Architecture", value: "7-agent stateful pipeline (LangGraph.js DAG)" },
-                  { label: "Gen AI Engine", value: "Google Gemini 2.0 Flash Lite + local fallback" },
+                  { label: "Gen AI Engine", value: "Google Gemini 3.1 Flash Lite + local fallback" },
                   { label: "ML Models", value: "Z-Score anomaly detection + demand forecasting" },
                   { label: "Decision Model", value: "P1/P2/P3 severity × efficiency impact ranking" },
                   { label: "Automation", value: "P3 → auto-rebalance · P1/P2 → manager review" },
