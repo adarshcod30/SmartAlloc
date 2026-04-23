@@ -64,12 +64,12 @@ export default function ActionsPage() {
   const executedCount = actions.filter(a => a.status === 'executed').length;
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white py-12 px-8 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-[#050505] text-white py-12 px-8 selection:bg-emerald-500/30">
       <main className="container mx-auto max-w-6xl">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="max-w-2xl">
-            <div className="flex items-center gap-3 text-blue-400 mb-4">
+            <div className="flex items-center gap-3 text-emerald-400 mb-4">
                <Zap className="h-5 w-5 fill-current" />
                <span className="text-[10px] font-black uppercase tracking-[0.4em]">Autonomous Rebalancing</span>
             </div>
@@ -146,7 +146,7 @@ export default function ActionsPage() {
                     <div className="flex items-center gap-10">
                       <div>
                         <p className="text-[10px] text-white/60 font-black uppercase tracking-widest mb-1">Confidence</p>
-                        <p className="text-xl font-black text-blue-400">{act.confidence}%</p>
+                        <p className="text-xl font-black text-emerald-400">{act.confidence}%</p>
                       </div>
                       <div>
                         <p className="text-[10px] text-white/60 font-black uppercase tracking-widest mb-1">Resource Shift</p>
@@ -158,7 +158,7 @@ export default function ActionsPage() {
                   <div className="flex flex-row md:flex-col items-center justify-center gap-4 border-t md:border-t-0 md:border-l border-white/10 pt-8 md:pt-0 md:pl-10 min-w-[200px]">
                     <button 
                       onClick={() => handleApprove(act)}
-                      className="w-full h-16 bg-white text-black font-black uppercase tracking-widest rounded-xl hover:bg-blue-500 hover:text-white transition-all flex items-center justify-center gap-2 active:scale-95"
+                      className="w-full h-16 bg-white text-black font-black uppercase tracking-widest rounded-xl hover:bg-emerald-500 hover:text-white transition-all flex items-center justify-center gap-2 active:scale-95"
                     >
                       Approve
                     </button>

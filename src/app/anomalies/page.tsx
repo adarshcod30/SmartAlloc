@@ -140,8 +140,8 @@ export default function AnomaliesPage() {
                       <span className={`px-3 py-1 text-[9px] font-black rounded-full border uppercase tracking-widest ${
                         a.anomaly_type === 'over_allocated' ? 'bg-red-500/10 text-red-500 border-red-500/20' :
                         a.anomaly_type === 'under_utilized' ? 'bg-amber-500/10 text-amber-500 border-amber-500/20' :
-                        a.anomaly_type === 'bottleneck' ? 'bg-purple-500/10 text-purple-400 border-purple-500/20' :
-                        'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                        a.anomaly_type === 'bottleneck' ? 'bg-cyan-500/10 text-cyan-400 border-cyan-500/20' :
+                        'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
                       }`}>
                         {a.anomaly_type.replace(/_/g, ' ')}
                       </span>

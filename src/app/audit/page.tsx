@@ -30,7 +30,7 @@ export default function AuditPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white py-12 px-8 selection:bg-blue-500/30">
+    <div className="min-h-screen bg-[#050505] text-white py-12 px-8 selection:bg-emerald-500/30">
       <main className="container mx-auto max-w-5xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="max-w-2xl">
@@ -47,7 +47,7 @@ export default function AuditPage() {
             </p>
           </div>
           <div className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-3xl transition-all hover:bg-white/10">
-             <RefreshCw className={`h-3 w-3 text-blue-400 ${loading ? 'animate-spin' : ''}`} />
+             <RefreshCw className={`h-3 w-3 text-emerald-400 ${loading ? 'animate-spin' : ''}`} />
              <span className="text-[10px] font-black uppercase tracking-widest text-white/40">Observability Active</span>
           </div>
         </div>
@@ -55,7 +55,7 @@ export default function AuditPage() {
         <div className="bg-zinc-900/30 border border-white/5 rounded-[2.5rem] overflow-hidden backdrop-blur-3xl shadow-2xl">
           <div className="px-10 py-8 border-b border-white/5 flex items-center justify-between bg-white/[0.01]">
             <h2 className="text-xl font-black flex items-center gap-3 uppercase tracking-tighter">
-              <Layers className="h-5 w-5 text-blue-500" /> 
+              <Layers className="h-5 w-5 text-emerald-500" /> 
               Multi-Agent Execution Log
             </h2>
             <div className="text-[10px] font-black text-white/40 uppercase tracking-widest">
@@ -84,7 +84,7 @@ export default function AuditPage() {
                     className="p-8 hover:bg-white/[0.02] transition-colors group"
                   >
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="bg-blue-500/10 text-blue-500 border border-blue-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
+                      <div className="bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">
                         AGENT: {log.agent}
                       </div>
                       <span className="text-xs font-mono text-white/40 uppercase tracking-widest">{new Date(log.timestamp).toLocaleTimeString()}</span>
@@ -97,10 +97,10 @@ export default function AuditPage() {
                     </div>
                     
                     <div className="bg-black/40 rounded-2xl p-6 border border-white/5 group-hover:border-white/10 transition-colors">
-                      <div className="text-blue-400 mb-4 font-black flex items-center gap-2 text-sm uppercase tracking-tighter">
+                      <div className="text-emerald-400 mb-4 font-black flex items-center gap-2 text-sm uppercase tracking-tighter">
                         <Activity className="h-4 w-4" /> {log.event.replace(/_/g, " ")}
                       </div>
-                      <pre className="text-xs text-white/40 font-mono leading-relaxed overflow-x-auto selection:bg-blue-500/40 selection:text-white">
+                      <pre className="text-xs text-white/40 font-mono leading-relaxed overflow-x-auto selection:bg-emerald-500/40 selection:text-white">
                         {JSON.stringify(log.payload, null, 2)}
                       </pre>
                     </div>

@@ -47,10 +47,10 @@ const agents = [
     metrics: { horizon: "24–72 hrs", precision: "87%", pools: "15+ monitored" },
   },
   {
-    id: "reason", name: "Gen AI Advisor", icon: Brain, color: "from-purple-500 to-violet-400",
+    id: "reason", name: "Gen AI Advisor", icon: Brain, color: "from-cyan-500 to-teal-400",
     desc: "Google Gemini performs root-cause analysis on allocation inefficiencies — generating natural-language explanations of why resources should be reallocated and ranking alternative strategies.",
     vision: "Fine-tuned LLM with domain-specific resource management knowledge graphs, RAG retrieval over infrastructure policies, and multi-turn reasoning chains",
-    proto: "Google Gemini 2.0 Flash with intelligent local fallback for real-time optimization reasoning, scenario-aware prompts ensuring unique analysis per run",
+    proto: "Google Gemini 2.0 Flash Lite with intelligent local fallback for real-time optimization reasoning, scenario-aware prompts ensuring unique analysis per run",
     metrics: { model: "Gemini 2.0", fallback: "Local AI", latency: "~1.5s" },
   },
   {
@@ -68,7 +68,7 @@ const agents = [
     metrics: { autonomous: "P3 auto-exec", review: "P1/P2 queued", latency: "<100ms" },
   },
   {
-    id: "audit", name: "Decision Logger", icon: CheckCircle2, color: "from-indigo-500 to-blue-400",
+    id: "audit", name: "Decision Logger", icon: CheckCircle2, color: "from-emerald-500 to-emerald-400",
     desc: "Every allocation decision across all 7 agents is fingerprinted with a unique RunID, timestamped, and persisted for complete traceability and optimization history.",
     vision: "Immutable audit trail with compliance hooks, automated reporting dashboards, and cross-department access controls for allocation governance",
     proto: "Local JSON audit store with full trace per agent per run — Gen AI reasoning, efficiency scores, resource shifts, and execution status all recorded",
@@ -93,7 +93,7 @@ const capabilities = [
   {
     icon: Brain, title: "Gen AI Optimization Advisor",
     desc: "Gemini-powered reasoning that produces human-readable explanations of why resources should be reallocated and ranks alternative strategies.",
-    vision: "Fine-tuned LLM + knowledge graphs", proto: "Google Gemini 2.0 Flash",
+    vision: "Fine-tuned LLM + knowledge graphs", proto: "Google Gemini 2.0 Flash Lite",
     detail: "Each analysis includes efficiency scores, contextual reasoning, alternative strategies, and risk assessment for transparent allocation decisions."
   },
   {
@@ -131,7 +131,7 @@ const capabilities = [
 /* ─── tech stack ─── */
 const techStack = [
   { name: "LangGraph.js", desc: "Stateful multi-agent orchestration with directed acyclic graph execution", icon: GitBranch },
-  { name: "Google Gemini", desc: "Gemini 2.0 Flash for Gen AI optimization reasoning", icon: Brain },
+  { name: "Google Gemini", desc: "Gemini 2.0 Flash Lite for Gen AI optimization reasoning", icon: Brain },
   { name: "ML Pipeline", desc: "Z-Score anomaly detection + demand forecasting", icon: Database },
   { name: "Next.js 14", desc: "App Router with server-side rendering and API routes", icon: Globe },
   { name: "Framer Motion", desc: "Production-grade scroll-driven animations", icon: Layers },
@@ -141,7 +141,7 @@ const techStack = [
 /* ─── comparison data ─── */
 const comparisonRows = [
   { dimension: "Data Ingestion", vision: "Multi-region Kafka streams at 50K events/sec from K8s, HR, and cloud billing", proto: "Local JSON stream with 50+ synthetic resource requests per workload scenario" },
-  { dimension: "Intelligence Layer", vision: "Fine-tuned LLM clusters with domain-specific resource management knowledge graphs", proto: "Google Gemini 2.0 Flash with intelligent local fallback for allocation reasoning" },
+  { dimension: "Intelligence Layer", vision: "Fine-tuned LLM clusters with domain-specific resource management knowledge graphs", proto: "Google Gemini 2.0 Flash Lite with intelligent local fallback for allocation reasoning" },
   { dimension: "ML Models", vision: "Ensemble Isolation Forest + Autoencoders with continuous retraining on utilization history", proto: "Statistical Z-Score anomaly detection + moving-average demand forecasting" },
   { dimension: "Automation", vision: "Direct Kubernetes + Terraform integration for automated infrastructure scaling", proto: "Autonomous rebalancing engine with local approval queue for critical shifts" },
   { dimension: "Scale", vision: "10K+ concurrent resource pools, sub-100ms P99 latency, multi-cluster", proto: "Local execution, ~2s end-to-end optimization with Gemini inference" },
@@ -197,14 +197,14 @@ export default function OverviewPage() {
   const actions = metrics?.total_actions || 20;
 
   return (
-    <div className="bg-[#050505] text-white selection:bg-blue-500/30">
+    <div className="bg-[#050505] text-white selection:bg-emerald-500/30">
 
       {/* ══════════════════════════════════════════════
           S1 — CINEMATIC HERO
       ══════════════════════════════════════════════ */}
       <section className="relative pt-28 pb-40 overflow-hidden">
-        <div className="absolute top-[-200px] left-1/3 w-[800px] h-[800px] bg-blue-600/[0.06] blur-[200px] rounded-full" />
-        <div className="absolute bottom-[-150px] right-1/4 w-[600px] h-[600px] bg-purple-600/[0.05] blur-[180px] rounded-full" />
+        <div className="absolute top-[-200px] left-1/3 w-[800px] h-[800px] bg-emerald-600/[0.06] blur-[200px] rounded-full" />
+        <div className="absolute bottom-[-150px] right-1/4 w-[600px] h-[600px] bg-cyan-600/[0.05] blur-[180px] rounded-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-white/[0.015] rounded-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] border border-white/[0.025] rounded-full" />
 
@@ -213,9 +213,9 @@ export default function OverviewPage() {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-blue-500/[0.08] border border-blue-500/[0.15] text-blue-400/90 text-[10px] font-black tracking-[0.35em] uppercase mb-10"
+              className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-emerald-500/[0.08] border border-emerald-500/[0.15] text-emerald-400/90 text-[10px] font-black tracking-[0.35em] uppercase mb-10"
             >
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+              <div className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               AI-Powered Smart Resource Allocation Platform
             </motion.div>
 
@@ -249,7 +249,7 @@ export default function OverviewPage() {
               className="flex flex-col sm:flex-row items-center justify-center gap-5"
             >
               <Link href="/simulation"
-                className="group px-10 py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-black text-lg rounded-2xl hover:from-blue-500 hover:to-purple-500 transition-all flex items-center gap-3 shadow-[0_20px_50px_rgba(99,102,241,0.15)]"
+                className="group px-10 py-5 bg-gradient-to-r from-emerald-600 to-cyan-600 text-white font-black text-lg rounded-2xl hover:from-emerald-500 hover:to-cyan-500 transition-all flex items-center gap-3 shadow-[0_20px_50px_rgba(16,185,129,0.15)]"
               >
                 Enter Allocation Lab
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
@@ -283,7 +283,7 @@ export default function OverviewPage() {
                 <p className="text-3xl font-black tracking-tighter">
                   {stat.prefix}<AnimatedNumber value={stat.value} suffix={stat.suffix} />
                 </p>
-                <p className="text-[11px] font-semibold text-blue-400/80">{stat.sub}</p>
+                <p className="text-[11px] font-semibold text-emerald-400/80">{stat.sub}</p>
               </motion.div>
             ))}
           </div>
@@ -310,12 +310,12 @@ export default function OverviewPage() {
                 {[
                   "Analyzes 50+ resource allocation requests per optimization run",
                   "7 specialized AI agents orchestrated by LangGraph.js state machine",
-                  "Google Gemini 2.0 Flash for Gen AI optimization reasoning",
+                  "Google Gemini 2.0 Flash Lite for Gen AI optimization reasoning",
                   "ML-based Z-Score anomaly detection + demand forecasting",
                   "Auto-rebalance for routine optimizations, manager approval for critical shifts",
                 ].map((point, i) => (
                   <motion.div key={i} {...fadeUp} {...stagger(i)} className="flex items-start gap-3">
-                    <CheckCircle2 className="h-4 w-4 text-blue-400/80 mt-1 shrink-0" />
+                    <CheckCircle2 className="h-4 w-4 text-emerald-400/80 mt-1 shrink-0" />
                     <p className="text-sm text-white/60 font-medium">{point}</p>
                   </motion.div>
                 ))}
@@ -323,11 +323,11 @@ export default function OverviewPage() {
             </motion.div>
 
             <motion.div {...fadeUp} {...stagger(2)}>
-              <div className="p-8 rounded-3xl bg-gradient-to-br from-blue-600/[0.1] to-purple-600/[0.05] border border-blue-500/[0.12] space-y-6">
+              <div className="p-8 rounded-3xl bg-gradient-to-br from-emerald-600/[0.1] to-cyan-600/[0.05] border border-emerald-500/[0.12] space-y-6">
                 <h3 className="text-xl font-black tracking-tight">System at a Glance</h3>
                 {[
                   { label: "Architecture", value: "7-agent stateful pipeline (LangGraph.js DAG)" },
-                  { label: "Gen AI Engine", value: "Google Gemini 2.0 Flash + local fallback" },
+                  { label: "Gen AI Engine", value: "Google Gemini 2.0 Flash Lite + local fallback" },
                   { label: "ML Models", value: "Z-Score anomaly detection + demand forecasting" },
                   { label: "Decision Model", value: "P1/P2/P3 severity × efficiency impact ranking" },
                   { label: "Automation", value: "P3 → auto-rebalance · P1/P2 → manager review" },
@@ -335,7 +335,7 @@ export default function OverviewPage() {
                   { label: "Frontend", value: "Next.js 14 + Framer Motion (real-time updates)" },
                 ].map((row, i) => (
                   <div key={i} className="flex items-start gap-4 pb-4 border-b border-white/[0.04] last:border-0 last:pb-0">
-                    <p className="text-[10px] font-black uppercase tracking-widest text-blue-400/70 w-28 shrink-0 pt-0.5">{row.label}</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400/70 w-28 shrink-0 pt-0.5">{row.label}</p>
                     <p className="text-sm text-white/70 font-semibold">{row.value}</p>
                   </div>
                 ))}
@@ -369,10 +369,10 @@ export default function OverviewPage() {
               { icon: Clock, title: "Slow Rebalancing", desc: "Even when waste is detected, the approval and reallocation process takes days — during which efficiency continues to drop.", stat: "5–7 day rebalance cycle" },
             ].map((card, i) => (
               <motion.div key={i} {...fadeUp} {...stagger(i)}
-                className="p-7 rounded-3xl bg-white/[0.03] border border-white/[0.06] hover:border-blue-500/[0.15] transition-all group"
+                className="p-7 rounded-3xl bg-white/[0.03] border border-white/[0.06] hover:border-emerald-500/[0.15] transition-all group"
               >
-                <div className="h-11 w-11 rounded-xl bg-white/[0.05] flex items-center justify-center mb-5 group-hover:bg-blue-500/10 transition-colors">
-                  <card.icon className="h-5 w-5 text-white/60 group-hover:text-blue-400 transition-colors" />
+                <div className="h-11 w-11 rounded-xl bg-white/[0.05] flex items-center justify-center mb-5 group-hover:bg-emerald-500/10 transition-colors">
+                  <card.icon className="h-5 w-5 text-white/60 group-hover:text-emerald-400 transition-colors" />
                 </div>
                 <h3 className="text-base font-black mb-2 tracking-tight">{card.title}</h3>
                 <p className="text-sm text-white/65 leading-relaxed font-medium mb-4">{card.desc}</p>
@@ -389,7 +389,7 @@ export default function OverviewPage() {
       <section id="how-it-works" className="py-32">
         <div className="container mx-auto px-8">
           <motion.div {...fadeUp} className="max-w-3xl mb-20">
-            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-400/80 mb-5">How It Works</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400/80 mb-5">How It Works</p>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] mb-6">
               5 Steps from <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Raw Data</span> to Optimization.
             </h2>
@@ -402,16 +402,16 @@ export default function OverviewPage() {
           <div className="space-y-6">
             {howItWorks.map((item, i) => (
               <motion.div key={i} {...fadeUp} {...stagger(i)}
-                className="flex gap-6 md:gap-10 p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-blue-500/[0.12] transition-all group"
+                className="flex gap-6 md:gap-10 p-6 md:p-8 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/[0.12] transition-all group"
               >
                 <div className="shrink-0">
-                  <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-blue-600/20 to-purple-600/10 border border-blue-500/[0.15] flex items-center justify-center group-hover:from-blue-600/30 group-hover:to-purple-600/20 transition-all">
-                    <span className="text-2xl font-black text-blue-400/60 group-hover:text-blue-400 transition-colors">{item.step}</span>
+                  <div className="h-16 w-16 rounded-2xl bg-gradient-to-br from-emerald-600/20 to-cyan-600/10 border border-emerald-500/[0.15] flex items-center justify-center group-hover:from-emerald-600/30 group-hover:to-cyan-600/20 transition-all">
+                    <span className="text-2xl font-black text-emerald-400/60 group-hover:text-emerald-400 transition-colors">{item.step}</span>
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <item.icon className="h-4 w-4 text-blue-400/70" />
+                    <item.icon className="h-4 w-4 text-emerald-400/70" />
                     <h3 className="text-lg font-black tracking-tight">{item.title}</h3>
                   </div>
                   <p className="text-sm text-white/70 leading-relaxed font-medium">{item.desc}</p>
@@ -427,18 +427,18 @@ export default function OverviewPage() {
       ══════════════════════════════════════════════ */}
       <section id="pipeline" className="py-32 bg-white/[0.01] border-y border-white/[0.04] relative overflow-hidden">
         {/* Background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-blue-600/[0.03] blur-[150px] rounded-full pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-emerald-600/[0.03] blur-[150px] rounded-full pointer-events-none" />
         
         <div className="container mx-auto px-8 relative z-10">
           {/* Enhanced header — centered */}
           <motion.div {...fadeUp} className="text-center mb-16 max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/[0.08] border border-blue-500/[0.15] text-blue-400 text-[10px] font-black tracking-[0.35em] uppercase mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/[0.08] border border-emerald-500/[0.15] text-emerald-400 text-[10px] font-black tracking-[0.35em] uppercase mb-8">
               <Cpu className="h-3 w-3" />
               Architecture Deep Dive
             </div>
             <h2 className="text-5xl md:text-6xl font-black tracking-tighter leading-[0.95] mb-6">
               7 Agents. One{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-violet-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-cyan-400 to-teal-500">
                 Orchestrated
               </span>{" "}
               Pipeline.
@@ -472,14 +472,14 @@ export default function OverviewPage() {
                       onClick={() => setSelectedAgent(isSelected ? null : i)}
                       className={`relative flex flex-col items-center p-3 pt-5 pb-4 rounded-2xl border transition-all duration-300 cursor-pointer text-center group w-[130px] shrink-0 ${
                         isSelected
-                          ? "bg-gradient-to-b from-blue-600/[0.15] to-purple-600/[0.05] border-blue-400/40 shadow-[0_0_30px_rgba(96,165,250,0.15)] -translate-y-1"
-                          : "bg-[#0A0A0A] border-white/[0.06] hover:border-blue-500/[0.25] hover:bg-white/[0.03] hover:-translate-y-1 shadow-lg"
+                          ? "bg-gradient-to-b from-emerald-600/[0.15] to-cyan-600/[0.05] border-emerald-400/40 shadow-[0_0_30px_rgba(16,185,129,0.15)] -translate-y-1"
+                          : "bg-[#0A0A0A] border-white/[0.06] hover:border-emerald-500/[0.25] hover:bg-white/[0.03] hover:-translate-y-1 shadow-lg"
                       }`}
                     >
                       <div className={`h-11 w-11 rounded-xl bg-gradient-to-br ${agent.color} flex items-center justify-center mb-3 shadow-[0_0_15px_rgba(0,0,0,0.4)] border border-white/15 group-hover:scale-110 transition-transform duration-300`}>
                         <Icon className="h-5 w-5 text-white" />
                       </div>
-                      <p className={`text-[8px] font-black uppercase tracking-[0.15em] leading-tight mb-1.5 transition-colors ${isSelected ? "text-blue-300" : "text-white/85"}`}>
+                      <p className={`text-[8px] font-black uppercase tracking-[0.15em] leading-tight mb-1.5 transition-colors ${isSelected ? "text-emerald-300" : "text-white/85"}`}>
                         {agent.name}
                       </p>
                       <p className="text-[9px] text-white/40 font-medium leading-tight">
@@ -490,7 +490,7 @@ export default function OverviewPage() {
                       {isSelected && (
                         <motion.div
                           layoutId="pipeline-indicator"
-                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-1 w-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
+                          className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-1 w-8 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 shadow-[0_0_10px_rgba(16,185,129,0.6)]"
                           transition={{ type: "spring", stiffness: 400, damping: 30 }}
                         />
                       )}
@@ -500,8 +500,8 @@ export default function OverviewPage() {
                     {i < agents.length - 1 && (
                       <div className="flex items-center justify-center shrink-0 px-1">
                         <div className="flex items-center gap-0.5">
-                          <div className="w-4 h-[1.5px] bg-gradient-to-r from-white/10 to-blue-400/30 rounded-full" />
-                          <ArrowRight className="h-3.5 w-3.5 text-blue-400/60" />
+                          <div className="w-4 h-[1.5px] bg-gradient-to-r from-white/10 to-emerald-400/30 rounded-full" />
+                          <ArrowRight className="h-3.5 w-3.5 text-emerald-400/60" />
                         </div>
                       </div>
                     )}
@@ -517,7 +517,7 @@ export default function OverviewPage() {
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35 }}
-              className="rounded-3xl border border-blue-500/[0.1] bg-white/[0.03] p-8 md:p-10 backdrop-blur-sm"
+              className="rounded-3xl border border-emerald-500/[0.1] bg-white/[0.03] p-8 md:p-10 backdrop-blur-sm"
             >
               <div className="flex items-start gap-5 mb-8">
                 <div className={`h-14 w-14 rounded-2xl bg-gradient-to-br ${agents[selectedAgent].color} flex items-center justify-center shadow-lg shrink-0`}>
@@ -545,9 +545,9 @@ export default function OverviewPage() {
                   <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-3">🔮 Full-Scale Production Vision</p>
                   <p className="text-white/70 font-semibold leading-relaxed text-sm">{agents[selectedAgent].vision}</p>
                 </div>
-                <div className="p-6 rounded-2xl bg-blue-500/[0.05] border border-blue-500/[0.12]">
-                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400/80 mb-3">⚡ Current Working Prototype</p>
-                  <p className="text-blue-300/90 font-semibold leading-relaxed text-sm">{agents[selectedAgent].proto}</p>
+                <div className="p-6 rounded-2xl bg-emerald-500/[0.05] border border-emerald-500/[0.12]">
+                  <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400/80 mb-3">⚡ Current Working Prototype</p>
+                  <p className="text-emerald-300/90 font-semibold leading-relaxed text-sm">{agents[selectedAgent].proto}</p>
                 </div>
               </div>
             </motion.div>
@@ -561,7 +561,7 @@ export default function OverviewPage() {
       <section className="py-32">
         <div className="container mx-auto px-8">
           <motion.div {...fadeUp} className="max-w-3xl mb-20">
-            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-400/80 mb-5">Platform Capabilities</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400/80 mb-5">Platform Capabilities</p>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] mb-6">
               End-to-End <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Intelligence & Optimization.</span>
             </h2>
@@ -574,10 +574,10 @@ export default function OverviewPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {capabilities.map((cap, i) => (
               <motion.div key={i} {...fadeUp} {...stagger(i)}
-                className="group p-6 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-blue-500/[0.12] transition-all"
+                className="group p-6 rounded-3xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/[0.12] transition-all"
               >
-                <div className="h-10 w-10 rounded-xl bg-white/[0.05] flex items-center justify-center mb-4 group-hover:bg-blue-500/10 transition-colors">
-                  <cap.icon className="h-5 w-5 text-white/60 group-hover:text-blue-400 transition-colors" />
+                <div className="h-10 w-10 rounded-xl bg-white/[0.05] flex items-center justify-center mb-4 group-hover:bg-emerald-500/10 transition-colors">
+                  <cap.icon className="h-5 w-5 text-white/60 group-hover:text-emerald-400 transition-colors" />
                 </div>
                 <h3 className="text-sm font-black mb-2 tracking-tight">{cap.title}</h3>
                 <p className="text-[13px] text-white/50 leading-relaxed mb-3 font-medium">{cap.desc}</p>
@@ -586,7 +586,7 @@ export default function OverviewPage() {
                   <span className="block px-2 py-0.5 rounded bg-white/[0.04] text-[8px] font-bold text-white/50 uppercase tracking-wider w-fit">
                     Vision: {cap.vision}
                   </span>
-                  <span className="block px-2 py-0.5 rounded bg-blue-500/[0.08] text-[8px] font-bold text-blue-400/80 uppercase tracking-wider w-fit">
+                  <span className="block px-2 py-0.5 rounded bg-emerald-500/[0.08] text-[8px] font-bold text-emerald-400/80 uppercase tracking-wider w-fit">
                     Prototype: {cap.proto}
                   </span>
                 </div>
@@ -602,7 +602,7 @@ export default function OverviewPage() {
       <section className="py-32 bg-white/[0.01] border-y border-white/[0.04]">
         <div className="container mx-auto px-8">
           <motion.div {...fadeUp} className="max-w-3xl mb-20">
-            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-400/80 mb-5">Vision vs Reality</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400/80 mb-5">Vision vs Reality</p>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] mb-6">
               Production Vision.<br />
               <span className="text-white/45">Prototype Execution.</span>
@@ -618,12 +618,12 @@ export default function OverviewPage() {
             {/* Vision */}
             <motion.div {...fadeUp} className="p-8 md:p-10 rounded-3xl bg-white/[0.03] border border-white/[0.06]">
               <div className="flex items-center gap-3 mb-8">
-                <div className="h-3 w-3 rounded-full bg-purple-400/40" />
+                <div className="h-3 w-3 rounded-full bg-cyan-400/40" />
                 <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/55">Full-Scale Production System</p>
               </div>
               {comparisonRows.map((row, i) => (
                 <div key={i} className="flex items-start gap-4 pb-5 mb-5 border-b border-white/[0.04] last:border-0 last:pb-0 last:mb-0">
-                  <div className="h-1.5 w-1.5 rounded-full bg-purple-400/30 mt-2.5 shrink-0" />
+                  <div className="h-1.5 w-1.5 rounded-full bg-cyan-400/30 mt-2.5 shrink-0" />
                   <div>
                     <p className="text-[10px] font-black uppercase tracking-widest text-white/45 mb-1">{row.dimension}</p>
                     <p className="text-sm text-white/70 font-semibold leading-relaxed">{row.vision}</p>
@@ -633,17 +633,17 @@ export default function OverviewPage() {
             </motion.div>
 
             {/* Prototype */}
-            <motion.div {...fadeUp} {...stagger(1)} className="p-8 md:p-10 rounded-3xl bg-gradient-to-br from-blue-600/[0.08] to-purple-600/[0.04] border border-blue-500/[0.12]">
+            <motion.div {...fadeUp} {...stagger(1)} className="p-8 md:p-10 rounded-3xl bg-gradient-to-br from-emerald-600/[0.08] to-cyan-600/[0.04] border border-emerald-500/[0.12]">
               <div className="flex items-center gap-3 mb-8">
-                <div className="h-3 w-3 rounded-full bg-blue-400 animate-pulse" />
-                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-blue-400/75">Current Working Prototype — Live</p>
+                <div className="h-3 w-3 rounded-full bg-emerald-400 animate-pulse" />
+                <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400/75">Current Working Prototype — Live</p>
               </div>
               {comparisonRows.map((row, i) => (
-                <div key={i} className="flex items-start gap-4 pb-5 mb-5 border-b border-blue-500/[0.06] last:border-0 last:pb-0 last:mb-0">
-                  <div className="h-1.5 w-1.5 rounded-full bg-blue-400/40 mt-2.5 shrink-0" />
+                <div key={i} className="flex items-start gap-4 pb-5 mb-5 border-b border-emerald-500/[0.06] last:border-0 last:pb-0 last:mb-0">
+                  <div className="h-1.5 w-1.5 rounded-full bg-emerald-400/40 mt-2.5 shrink-0" />
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-widest text-blue-400/60 mb-1">{row.dimension}</p>
-                    <p className="text-sm text-blue-300/85 font-semibold leading-relaxed">{row.proto}</p>
+                    <p className="text-[10px] font-black uppercase tracking-widest text-emerald-400/60 mb-1">{row.dimension}</p>
+                    <p className="text-sm text-emerald-300/85 font-semibold leading-relaxed">{row.proto}</p>
                   </div>
                 </div>
               ))}
@@ -658,7 +658,7 @@ export default function OverviewPage() {
       <section className="py-32">
         <div className="container mx-auto px-8">
           <motion.div {...fadeUp} className="max-w-3xl mb-16">
-            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-400/80 mb-5">Technology Foundation</p>
+            <p className="text-[11px] font-black uppercase tracking-[0.4em] text-emerald-400/80 mb-5">Technology Foundation</p>
             <h2 className="text-4xl md:text-5xl font-black tracking-tighter leading-[1.05] mb-6">
               100% Local. <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Unified TypeScript Stack.</span>
             </h2>
@@ -672,9 +672,9 @@ export default function OverviewPage() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
             {techStack.map((tech, i) => (
               <motion.div key={i} {...fadeUp} {...stagger(i)}
-                className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.05] hover:border-blue-500/[0.12] transition-all text-center group"
+                className="p-5 rounded-2xl bg-white/[0.03] border border-white/[0.05] hover:border-emerald-500/[0.12] transition-all text-center group"
               >
-                <tech.icon className="h-6 w-6 mx-auto mb-3 text-white/60 group-hover:text-blue-400 transition-colors" />
+                <tech.icon className="h-6 w-6 mx-auto mb-3 text-white/60 group-hover:text-emerald-400 transition-colors" />
                 <p className="text-sm font-black tracking-tight mb-1">{tech.name}</p>
                 <p className="text-[10px] text-white/50 font-medium leading-snug">{tech.desc}</p>
               </motion.div>
@@ -683,7 +683,7 @@ export default function OverviewPage() {
 
           {/* Architecture philosophy card */}
           <motion.div {...fadeUp}
-            className="p-10 md:p-14 rounded-[3rem] bg-gradient-to-br from-blue-600/[0.1] to-purple-600/[0.06] border border-blue-500/[0.1] relative overflow-hidden"
+            className="p-10 md:p-14 rounded-[3rem] bg-gradient-to-br from-emerald-600/[0.1] to-cyan-600/[0.06] border border-emerald-500/[0.1] relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-8 opacity-[0.03]">
               <Network className="w-64 h-64" />
@@ -712,7 +712,7 @@ export default function OverviewPage() {
                   { label: "Single Language", desc: "TypeScript end-to-end — no polyglot deployment complexity" },
                 ].map((feat, i) => (
                   <div key={i} className="p-5 rounded-2xl bg-white/[0.04] border border-white/[0.05]">
-                    <p className="text-xs font-black text-blue-400/80 mb-1">{feat.label}</p>
+                    <p className="text-xs font-black text-emerald-400/80 mb-1">{feat.label}</p>
                     <p className="text-sm text-white/65 font-medium">{feat.desc}</p>
                   </div>
                 ))}
