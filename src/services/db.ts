@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const DATA_DIR = path.join(process.cwd(), '.smartalloc-data');
+const DATA_DIR = process.env.VERCEL ? '/tmp/.smartalloc-data' : path.join(process.cwd(), '.smartalloc-data');
 function ensureDir() { if (!fs.existsSync(DATA_DIR)) fs.mkdirSync(DATA_DIR, { recursive: true }); }
 function readStore(file: string): any[] { 
   ensureDir(); const p = path.join(DATA_DIR, file);
