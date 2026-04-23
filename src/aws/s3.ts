@@ -1,4 +1,4 @@
-// src/aws/s3.ts — Local file storage replacing S3 (no AWS needed)
+// src/aws/s3.ts — Local file storage replacing S3
 import fs from 'fs';
 import path from 'path';
 

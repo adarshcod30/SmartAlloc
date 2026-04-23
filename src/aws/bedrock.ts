@@ -1,5 +1,5 @@
-// src/ai/gemini.ts — Google Gemini Integration for SmartAlloc
-// Replaces AWS Bedrock with Google Gemini API (free, no AWS needed)
+// src/aws/bedrock.ts — Google Gemini Integration for SmartAlloc
+// Uses Google Gemini API for Gen AI reasoning (fully local)
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.0-flash';
@@ -76,11 +76,13 @@ function generateLocalFallback(prompt: string): string {
   return JSON.stringify(result);
 }
 
-export async function callBedrock(prompt: string): Promise<string> {
+/** Call Gemini for text response */
+export async function callGeminiText(prompt: string): Promise<string> {
   return callGemini(prompt);
 }
 
-export async function callBedrockJSON(prompt: string): Promise<Record<string, unknown>> {
+/** Call Gemini and parse response as JSON */
+export async function callGeminiJSON(prompt: string): Promise<Record<string, unknown>> {
   const raw = await callGemini(prompt);
   const cleaned = raw
     .trim()
@@ -93,3 +95,7 @@ export async function callBedrockJSON(prompt: string): Promise<Record<string, un
     throw new Error(`Gemini returned invalid JSON:\n${cleaned}`);
   }
 }
+
+// Backward-compatible aliases
+export const callBedrock = callGeminiText;
+export const callBedrockJSON = callGeminiJSON;

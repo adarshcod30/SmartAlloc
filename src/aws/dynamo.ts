@@ -1,5 +1,5 @@
 // src/aws/dynamo.ts — Local JSON Storage for SmartAlloc
-// Replaces AWS DynamoDB with in-memory + file-based storage (no AWS needed)
+// Local in-memory + file-based storage
 import fs from 'fs';
 import path from 'path';
 

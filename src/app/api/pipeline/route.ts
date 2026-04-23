@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       TABLE: process.env.DYNAMO_STREAM_TABLE
     });
 
-    // Step 2: Write to DynamoDB stream table
+    // Step 2: Write to local data stream
     await Promise.all([
       ...simOutput.requests.map(req => putResourceRequest(req as unknown as Record<string, unknown>)),
       ...simOutput.metrics.map(met => putCapacityMetric(met as unknown as Record<string, unknown>)),

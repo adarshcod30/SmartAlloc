@@ -5,7 +5,7 @@ import {
   logEvent, 
   insertPendingActions 
 } from '../aws/dynamo';
-import { callBedrockJSON } from '../aws/bedrock';
+import { callGeminiJSON } from '../aws/bedrock';
 import { v4 as uuidv4 } from 'uuid';
 
 // --- NODES ---
@@ -152,7 +152,7 @@ export const analysisNode = async (state: PipelineState): Promise<Partial<Pipeli
       Return ONLY pure JSON.
     `;
 
-  const result = await callBedrockJSON(prompt) as Record<string, any>;
+  const result = await callGeminiJSON(prompt) as Record<string, any>;
   
   await logEvent(state.run_id, 'allocation_optimizer', 'analysis_complete', {
     actions: result.reallocation_plan?.length || 0,

@@ -111,7 +111,7 @@ export default function SimulationClient() {
             </h1>
             <p className="text-white/60 text-xl max-w-2xl font-medium tracking-tight">
               Test the limits of the 7-agent orchestrator. Every run triggers 
-              a full non-deterministic LangGraph cycle on AWS Serverless.
+              a full non-deterministic LangGraph cycle with Google Gemini.
             </p>
           </div>
           
