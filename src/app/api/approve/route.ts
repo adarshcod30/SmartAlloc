@@ -1,6 +1,6 @@
 // src/app/api/approve/route.ts
 import { NextResponse } from 'next/server'
-import { updateActionStatus, getActionsForRun, getAllRuns } from '@/aws/dynamo'
+import { updateActionStatus, getActionsForRun, getAllRuns } from '@/services/db'
 
 export const dynamic = 'force-dynamic'
 

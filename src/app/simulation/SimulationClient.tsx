@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Server, Search, Fingerprint, Zap, Shield, ArrowRight, Loader2, RefreshCw, Terminal, Activity } from "lucide-react";
-import { formatINR } from "@/lib/formatINR";
+
 
 export default function SimulationClient() {
   const [simulationState, setSimulationState] = useState<"IDLE" | "RUNNING" | "COMPLETE">("IDLE");

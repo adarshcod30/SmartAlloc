@@ -1,9 +1,9 @@
 // src/app/api/pipeline/route.ts
 import { NextResponse } from 'next/server'
 import { runSimulation } from '@/synthetic_data_engine/simulator'
-import { putResourceRequest, putCapacityMetric, logEvent } from '@/aws/dynamo'
+import { putResourceRequest, putCapacityMetric, logEvent } from '@/services/db'
 import { runPipeline } from '@/ai_agents/orchestrator'
-import { uploadToS3 } from '@/aws/s3'
+import { uploadToS3 } from '@/services/storage'
 import { v4 as uuidv4 } from 'uuid'
 
 export const dynamic = 'force-dynamic'

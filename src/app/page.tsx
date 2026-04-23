@@ -12,7 +12,7 @@ import {
   LineChart, PieChart, Boxes, Radar, Cog, Radio
 } from "lucide-react";
 import Link from "next/link";
-import { formatINR } from "@/lib/formatINR";
+import { formatNumber } from "@/lib/formatters";
 
 /* ─── animation presets ─── */
 const fadeUp = {
@@ -176,7 +176,7 @@ function AnimatedNumber({ value, suffix = "" }: { value: number; suffix?: string
     };
     requestAnimationFrame(step);
   }, [isInView, value]);
-  return <span ref={ref}>{formatINR(display)}{suffix}</span>;
+  return <span ref={ref}>{formatNumber(display)}{suffix}</span>;
 }
 
 /* ════════════════ MAIN PAGE ════════════════ */

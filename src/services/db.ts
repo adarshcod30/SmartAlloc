@@ -1,4 +1,4 @@
-// src/aws/dynamo.ts — Local JSON Storage for SmartAlloc
+// src/services/db.ts — Local JSON Storage for SmartAlloc
 // Local in-memory + file-based storage
 import fs from 'fs';
 import path from 'path';

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getRunEvents } from '@/aws/dynamo';
+import { getRunEvents } from '@/services/db';
 
 export const dynamic = 'force-dynamic';
 

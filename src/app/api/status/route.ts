@@ -1,6 +1,6 @@
 // src/app/api/status/route.ts
 import { NextResponse } from 'next/server'
-import { getStreamStats, getPendingActions, getAllRuns } from '@/aws/dynamo'
+import { getStreamStats, getPendingActions, getAllRuns } from '@/services/db'
 
 export async function GET() {
   try {

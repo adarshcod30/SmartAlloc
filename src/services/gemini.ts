@@ -1,4 +1,4 @@
-// src/aws/bedrock.ts — Google Gemini Integration for SmartAlloc
+// src/services/gemini.ts — Google Gemini Integration for SmartAlloc
 // Uses Google Gemini API for Gen AI reasoning (fully local)
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || '';

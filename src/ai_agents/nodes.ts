@@ -4,8 +4,8 @@ import {
   getRecentMetrics, 
   logEvent, 
   insertPendingActions 
-} from '../aws/dynamo';
-import { callGeminiJSON } from '../aws/bedrock';
+} from '../services/db';
+import { callGeminiJSON } from '../services/gemini';
 import { v4 as uuidv4 } from 'uuid';
 
 // --- NODES ---

@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getAllRuns } from '@/aws/dynamo';
+import { getAllRuns } from '@/services/db';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;

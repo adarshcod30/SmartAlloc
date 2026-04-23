@@ -9,7 +9,7 @@ import {
   actionNode, 
   auditNode 
 } from './nodes';
-import { logEvent } from '../aws/dynamo';
+import { logEvent } from '../services/db';
 
 const createGraph = () => {
   const workflow = new StateGraph(PipelineStateAnnotation)

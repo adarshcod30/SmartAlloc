@@ -1,7 +1,7 @@
 /**
  * Format a number with commas (Indian numbering system)
  */
-export function formatINR(num: number | undefined | null): string {
+export function formatNumber(num: number | undefined | null): string {
   if (num === undefined || num === null) return '0';
   const n = Math.abs(Math.round(num));
   const str = n.toString();
