@@ -12,7 +12,7 @@ export default function SimulationClient() {
   const [activeStep, setActiveStep] = useState(0);
   const [results, setResults] = useState<any>(null);
   const [logs, setLogs] = useState<{msg: string, type: 'info' | 'warn' | 'success' | 'tech', time: string}[]>([]);
-  const logEndRef = useRef<HTMLDivElement>(null);
+  const logContainerRef = useRef<HTMLDivElement>(null);
   const searchParams = useSearchParams();
   const hasAutoRun = useRef(false);
 
@@ -29,7 +29,10 @@ export default function SimulationClient() {
   };
 
   useEffect(() => {
-    logEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (logContainerRef.current) {
+      const { scrollHeight, clientHeight } = logContainerRef.current;
+      logContainerRef.current.scrollTo({ top: scrollHeight - clientHeight, behavior: "smooth" });
+    }
   }, [logs]);
 
   const triggerRun = async () => {
@@ -210,7 +213,7 @@ export default function SimulationClient() {
                      <div className="h-2 w-2 rounded-full bg-green-500/20" />
                   </div>
                </div>
-               <div className="p-6 h-64 overflow-y-auto font-mono text-sm space-y-2 scrollbar-hide">
+               <div ref={logContainerRef} className="p-6 h-64 overflow-y-auto font-mono text-sm space-y-2 scrollbar-hide">
                   {logs.length === 0 && (
                     <p className="text-white/45 italic">Awaiting pipeline initialization...</p>
                   )}
@@ -228,7 +231,7 @@ export default function SimulationClient() {
                        </span>
                     </div>
                   ))}
-                  <div ref={logEndRef} />
+
                </div>
             </div>
           </div>

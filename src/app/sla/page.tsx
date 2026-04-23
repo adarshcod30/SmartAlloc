@@ -55,8 +55,8 @@ export default function EfficiencyPage() {
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] animate-pulse" />
           
           <p className="text-emerald-400 font-black uppercase tracking-[0.5em] text-xs mb-6 opacity-80">Total Resource Units Optimized</p>
-          <div className="text-7xl md:text-9xl font-black text-white tracking-tighter mb-8 group-hover:scale-105 transition-transform duration-700">
-            {optimized} <span className="text-white/60 text-4xl">units</span>
+          <div className="text-7xl md:text-9xl font-black text-white tracking-tighter mb-8 group-hover:scale-105 transition-transform duration-700 flex items-baseline justify-center gap-4">
+            {optimized} <span className="text-white/60 text-4xl tracking-normal">units</span>
           </div>
           <div className="inline-flex items-center gap-3 px-6 py-2 rounded-2xl bg-green-500/10 border border-green-500/20 text-green-400 font-black text-sm uppercase tracking-widest">
             <TrendingUp className="h-4 w-4" /> 
