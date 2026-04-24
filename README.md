@@ -4,8 +4,8 @@
 
 <div align="center">
   <h1>⚡ SmartAlloc</h1>
-  <p><b>Enterprise Cost Intelligence & Autonomous Action</b></p>
-  <p><i>A 7-agent AI pipeline that watches enterprise finances 24/7, catches cost leakage before money leaves, and acts autonomously — with a human always in the loop for high-stakes decisions.</i></p>
+  <p><b>Enterprise Resource Intelligence & Autonomous Allocation</b></p>
+  <p><i>A 7-agent AI pipeline that watches enterprise cloud, compute, and personnel resources 24/7, catches inefficiencies before bottlenecks occur, and acts autonomously — with a human always in the loop for high-stakes decisions.</i></p>
 
   <br />
   <a href="https://smart-alloc.vercel.app/">
@@ -16,8 +16,8 @@
 
   [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
   [![Next.js](https://img.shields.io/badge/Next.js-14.2-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-  [![AWS Bedrock](https://img.shields.io/badge/Google_Gemini-3.1_Flash_Lite-06b6d4?style=for-the-badge&logo=amazonaws&logoColor=white)](https://aws.amazon.com/bedrock/)
-  [![Local JSON Storage](https://img.shields.io/badge/Local JSON Storage-Serverless-4053D6?style=for-the-badge&logo=amazondynamodb&logoColor=white)](https://aws.amazon.com/dynamodb/)
+  [![Google Gemini](https://img.shields.io/badge/Google_Gemini-3.1_Flash_Lite-06b6d4?style=for-the-badge&logo=google&logoColor=white)](https://aistudio.google.com/)
+  [![Local JSON Storage](https://img.shields.io/badge/JSON_Storage-Local-10B981?style=for-the-badge&logo=json&logoColor=white)]()
   [![LangGraph.js](https://img.shields.io/badge/LangGraph.js-Orchestration-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)](https://langchain-ai.github.io/langgraphjs/)
 </div>
 
@@ -25,13 +25,13 @@
 
 <br />
 
-> 📸 **Dashboard Overview:** Executive Summary with live metrics.
+> 📸 **Dashboard Overview:** Executive Summary with live allocation metrics.
 > ![Dashboard Overview](docs/screenshots/overview.png)
 
 ## Table of Contents
 
 - [The Problem — Why This Exists](#the-problem--why-this-exists)
-- [What SmartAlloc Does — Solution Overview](#what-costintel-does--solution-overview)
+- [What SmartAlloc Does — Solution Overview](#what-smartalloc-does--solution-overview)
 - [Key Features — Full Feature List](#key-features--full-feature-list)
 - [Architecture — Full System Architecture](#architecture--full-system-architecture)
 - [The 7-Agent Pipeline — Deep Dive](#the-7-agent-pipeline--deep-dive)
@@ -39,15 +39,14 @@
 - [Tech Stack — Full Table](#tech-stack--full-table)
 - [Project File Structure](#project-file-structure)
 - [Simulation Scenarios](#simulation-scenarios)
-- [AWS Infrastructure](#aws-infrastructure)
+- [Infrastructure Setup](#infrastructure-setup)
 - [The Prototype vs. Full Production System](#the-prototype-vs-full-production-system)
-- [The Financial Impact Model](#the-financial-impact-model)
+- [The Efficiency Impact Model](#the-efficiency-impact-model)
 - [Setup & Installation](#setup--installation)
 - [Environment Variables Reference](#environment-variables-reference)
 - [Dashboard Pages](#dashboard-pages)
 - [API Reference](#api-reference)
 - [How to Add a New Scenario](#how-to-add-a-new-scenario)
-- [Judging Criteria Alignment](#judging-criteria-alignment)
 - [Contributing & License](#contributing--license)
 - [Acknowledgements](#acknowledgements)
 
@@ -55,31 +54,31 @@
 
 ## The Problem — Why This Exists
 
-Imagine you are the CFO of an Indian enterprise processing `₹500 Crore` in annual procurement spend. Your finance team reviews invoices manually — thousands of them every month. They check for duplicate charges, compare vendor billing against contract rates, and flag anything suspicious. On a good day, they catch about 60% of the anomalies. But here is the problem: **by the time a human analyst spots a duplicate payment or an off-contract charge, the money has already left your account — typically 2 to 4 weeks ago.** 
+Imagine you are the VP of Engineering or CTO of a mid-to-large tech enterprise provisioning thousands of compute hours and managing massive cloud budgets. Your DevOps team reviews resource allocations manually — across multiple AWS/GCP clusters, Kubernetes namespaces, and internal team assignments. They check for over-provisioned databases, idle GPU instances, and duplicate service deployments. On a good day, they catch about 60% of the inefficiencies. But here is the problem: **by the time a human analyst spots an idle GPU or an over-allocated server, the compute waste has already occurred — typically over several weeks.** 
 
-The leakage is silent, continuous, and compounding.
+The resource leakage is silent, continuous, and compounding.
 
-Industry data shows that Indian enterprises lose between **5% to 8%** of their annual procurement spend to undetected cost leakage. This includes duplicate invoice submissions, off-contract billing, idle cloud infrastructure, and maverick spending. On a `₹500 Crore` budget, 5% leakage translates to **₹25 Crore per year walking out silently**.
+Industry data shows that tech enterprises waste between **30% to 40%** of their annual cloud and compute infrastructure spend due to undetected overallocation. This includes idle staging environments, unoptimized scaling groups, and orphaned storage volumes. On a `$10M` infrastructure budget, 30% leakage translates to **$3M per year walking out silently in compute waste**.
 
-Additionally, SLA breaches carry automatic penalty clauses — typically `₹25,000 to ₹1,00,000` per incident. Most SLA breaches are entirely predictable based on ticket volume, capacity, and vendor history. Yet no team prevents them proactively because there is no tool that combines real-time ticket analysis with predictive statistical modelling.
+Additionally, SLA breaches for critical services carry severe user-impact and latency penalties. Most SLA latency breaches are entirely predictable based on CPU/Memory volume, incoming traffic, and scaling history. Yet no team prevents them proactively because there is no tool that combines real-time compute analysis with predictive statistical modelling.
 
-> **The Critical Gap:** No existing tool combines anomaly detection + SLA breach prediction + autonomous corrective action + full audit trail in a single unified pipeline. SmartAlloc unifies these capabilities into an AI-orchestrated system that runs continuously, acts autonomously on low-risk issues, and holds high-impact decisions for human review.
+> **The Critical Gap:** No existing tool combines compute anomaly detection + latency/SLA breach prediction + autonomous scaling action + full audit trail in a single unified pipeline. SmartAlloc unifies these capabilities into an AI-orchestrated system that runs continuously, acts autonomously on safe scale-downs, and holds high-impact scale-ups for human review.
 
 ---
 
 ## What SmartAlloc Does — Solution Overview
 
-SmartAlloc is an autonomous AI agent system. It is not just a dashboard showing charts; it is an active participant in your enterprise finance operations that detects problems, reasons about causes, takes corrective action, and writes a complete audit trail in under **3 seconds** per execution cycle.
+SmartAlloc is an autonomous AI agent system. It is not just a dashboard showing usage charts; it is an active participant in your enterprise infrastructure operations that detects resource bottlenecks, reasons about scaling, takes corrective reallocation action, and writes a complete audit trail in under **3 seconds** per execution cycle.
 
-1. **Ingests Data:** Continuously reads procurement invoices and SLA tickets from a Local JSON Storage stream (mocking a live ERP feed like SAP or Oracle).
-2. **Detects Anomalies:** Scans 100% of transactions through a statistical isolation algorithm to identify pricing outliers, duplicates, and off-contract billing.
-3. **Predicts Breaches:** Forecasts which SLA tickets will breach their deadline before it happens using capacity and volume metrics.
-4. **Reasons & Synthesizes:** Passes findings to Google Gemini's Gemini 3.1 Flash Lite LLM, which synthesizes the raw data into a structured action plan.
-5. **Executes Autonomously:** Executes routine P3 actions (vendor blocks, payment holds) instantly.
-6. **Requires Human Approval:** Routes critical P1 and P2 actions to a human-in-the-loop approval queue.
-7. **Maintains Compliance:** Logs every single decision to an immutable Local JSON Storage audit trail.
+1. **Ingests Data:** Continuously reads compute metrics, active instances, and SLA tickets from a Local JSON stream (mocking a live telemetry feed like Datadog or Kubernetes metrics).
+2. **Detects Anomalies:** Scans 100% of telemetry through a statistical isolation algorithm to identify CPU under-utilization, memory leaks, and orphaned instances.
+3. **Predicts Bottlenecks:** Forecasts which services will breach their SLA latency constraints before it happens using traffic and load metrics.
+4. **Reasons & Synthesizes:** Passes findings to Google Gemini's **Gemini 3.1 Flash Lite** LLM, which synthesizes the raw data into a structured reallocation plan.
+5. **Executes Autonomously:** Executes routine P3 actions (spinning down idle dev instances, reclaiming orphaned storage) instantly.
+6. **Requires Human Approval:** Routes critical P1 and P2 actions (resizing production databases, cross-region failovers) to a human-in-the-loop approval queue.
+7. **Maintains Compliance:** Logs every single scale action to an immutable Local JSON audit trail.
 
-> 📸 **Live Activity Feed:** Dynamic timeline showing agent events in real-time.
+> 📸 **Live Activity Feed:** Dynamic timeline showing AI agent scaling events in real-time.
 > ![Live Activity Feed](docs/screenshots/activity_feed.png)
 
 ---
@@ -87,45 +86,45 @@ SmartAlloc is an autonomous AI agent system. It is not just a dashboard showing 
 ## Key Features — Full Feature List
 
 ### 1. 7-Agent LangGraph.js Pipeline
-The core of SmartAlloc is a stateful multi-agent pipeline: `Ingest → Anomaly → SLA → RootCause → Decision → Action → Audit`. Each agent has a single, testable responsibility. LangGraph.js manages a persistent, typed state object that flows through every node, giving the final Audit agent full visibility into what every upstream agent decided and why.
+The core of SmartAlloc is a stateful multi-agent pipeline: `Ingest → Anomaly → Bottleneck → RootCause → Decision → Action → Audit`. Each agent has a single, testable responsibility. LangGraph.js manages a persistent, typed state object that flows through every node, giving the final Audit agent full visibility into what every upstream agent decided and why.
 
 ### 2. Dynamic Simulation Engine
-Ships with 6 named enterprise scenarios (`normal`, `vendor_spike`, `sla_crisis`, `audit_crunch`, `post_merger`, `festive_rush`). Scenarios control anomaly rates, spike multipliers, and team capacity. The simulator uses zero fixed seeds and has a 20% burst event probability — mimicking real-world clusters of anomalies like compromised vendor accounts. 
+Ships with 6 named enterprise scenarios (`normal`, `peak_sprint`, `team_scaling`, `cloud_migration`, `product_launch`, `quarter_end`). Scenarios control resource demand rates, traffic multipliers, and node capacity. The simulator uses zero fixed seeds and has a 20% burst event probability — mimicking real-world traffic spikes or DDOS mitigations.
 
-> 📸 **Simulation Lab:** Real-time pipeline execution and logging.
+> 📸 **Simulation Lab:** Real-time pipeline execution and scaling logging.
 > ![Simulation Lab](docs/screenshots/simulation.png)
 
-### 3. Google Gemini Reasoning (Gemini 3.1 Flash Lite + Mistral Fallback)
-The Decision Agent uses `gemini-3.1-flash-lite-preview` via the Gemini GenerateContent API to synthesize ML findings into a structured JSON action plan. If Gemini 3.1 Flash Lite fails (timeout, rate limit), the pipeline automatically falls back to `local-fallback` using the `[INST]` prompt format. **The pipeline never halts.**
+### 3. Google Gemini Reasoning (Gemini 3.1 Flash Lite + Local Fallback)
+The Decision Agent uses `gemini-3.1-flash-lite-preview` via the Gemini API to synthesize ML findings into a structured JSON reallocation plan. If Gemini 3.1 Flash Lite fails (timeout, rate limit, no API key), the pipeline automatically falls back to an intelligent local heuristic simulation. **The pipeline never halts.**
 
 ### 4. Statistical Anomaly Detection
-Uses statistical methods inspired by Isolation Forest principles. Detects three types of anomalies: `spike`, `off-contract`, and `duplicate_timing`. Each anomaly receives a dynamic severity score and an estimated INR leakage value.
+Uses statistical methods inspired by Isolation Forest principles. Detects three types of anomalies: `over_allocated`, `under_utilized`, and `bottleneck`. Each anomaly receives a dynamic severity score based on the Z-score deviation from the resource baseline.
 
 ### 5. SLA Breach Prediction
-Performs statistical breach prediction combining metrics like team capacity, current ticket volume, time-of-day, and ticket priority. Calculates a breach probability for every open ticket, shifting from a reactive "pay the penalty" model to a proactive "reassign to prevent penalty" stance.
+Performs statistical bottleneck prediction combining metrics like node capacity, current request volume, time-of-day, and service priority. Calculates a breach probability for every active cluster, shifting from a reactive "wait for pagerduty" model to a proactive "auto-scale to prevent downtime" stance.
 
 ### 6. Human-in-the-Loop (HITL) Workflow
 Implements a three-tier priority system:
-* **P1:** Critical (over ₹5L) — Immediate human review.
-* **P2:** Significant (₹1L–₹5L) — Human review within 24h.
-* **P3:** Routine (under ₹1L) — Auto-executes instantly.
+* **P1:** Critical (Prod DB Resizing, Multi-Region Shift) — Immediate human review.
+* **P2:** Significant (Adding GPU nodes, Team Reassignments) — Human review within 24h.
+* **P3:** Routine (Stopping idle instances, clearing caches) — Auto-executes instantly.
 
 > 📸 **AI Actions Page:** Pending P1 approvals and executed actions.
 > ![AI Actions Page](docs/screenshots/approvals.png)
 
 ### 7. Immutable Audit Trail
-Every pipeline run and agent decision is written to the `audit.json` Local JSON Storage table containing the `run_id`, agent name, full JSON payload, and timestamps. This satisfies enterprise compliance and regulatory examinations.
+Every pipeline run and agent decision is written to the `audit.json` local storage table containing the `run_id`, agent name, full JSON payload, and timestamps. This satisfies enterprise compliance and infrastructure tracing.
 
 > 📸 **Technical Audit Trail:** Expandable traces for every pipeline run.
 > ![Audit Trail](docs/screenshots/audit_trail.png)
 
-### 8. Serverless AWS Infrastructure
-Fully serverless AWS stack optimized for **Vercel**. 
+### 8. Local-First Architecture
+Fully local stack optimized for ultra-fast hackathon demonstrations and zero-config deployment on **Vercel**.
 * **Compute**: Next.js 14 Serverless Functions
-* **Storage**: Local Filesystem (Report Persistence)
-* **Database**: Amazon Local JSON Storage (Audit & Actions)
-* **Intelligence**: Google Gemini (Gemini 3.1 Flash Lite + Mistral)
-* **Security**: IAM Role-based authentication (No hardcoded keys in cloud)
+* **Storage**: Vercel `/tmp` compatible Local Filesystem 
+* **Database**: Local JSON Storage (`stream.json`, `audit.json`, `approvals.json`)
+* **Intelligence**: Google Gemini (Gemini 3.1 Flash Lite) + Local Rule-based Fallback
+* **Security**: Zero AWS credentials required, completely standalone.
 
 ---
 
@@ -137,25 +136,25 @@ The **SmartAlloc** platform is designed as a highly cohesive, concurrently execu
 
 1.  **Presentation & API Layer (Next.js 14 App Router):**
     Handles static asset delivery, server-side dynamic rendering (`React Server Components`), and exposes lightweight asynchronous API endpoints (`/api/runs`, `/api/approve`). This layer is styled heavily with `Vanilla CSS` and `Framer Motion` for high-fidelity interactive elements, seamlessly providing a polished interface for human oversight.
-2.  **Stateful Persistence Layer (Amazon Local JSON Storage & S3):**
+2.  **Stateful Persistence Layer (Local JSON Storage):**
     The system requires ultra-low latency for agent state tracking and high durability for final reports. 
-    * **Local JSON Storage**: Managed via `live-stream`, `approvals`, and `audit-log` tables for structured state.
-    * **Local Filesystem**: Acts as the long-term vault for full-fidelity JSON reports generated after every pipeline run.
+    * **Local JSON Storage**: Managed via `stream.json`, `approvals.json`, and `audit.json` for structured state.
+    * **File System Vault**: Acts as the long-term vault for full-fidelity JSON trace payloads.
 3.  **Intelligence Layer (Google Gemini Models):**
-    All cognitive processing routes through an abstraction layer to AWS Bedrock. For reasoning tasks, the system deploys **Amazon Gemini 3.1 Flash Lite** (primary) and **Local Fallback** (fallback). Access is secured via IAM Service Roles, eliminating the need for environment-variable based credentials in production.
+    All cognitive processing routes through the native Gemini API. For reasoning tasks, the system deploys **Gemini 3.1 Flash Lite** (primary) and an embedded **Local Simulator Fallback**. Access requires only a standard `GEMINI_API_KEY`.
 
 ```mermaid
 flowchart TB
 
 %% ── STYLES ─────────────────────────
-classDef main fill:#0f172a,stroke:#3b82f6,color:#f8fafc,stroke-width:2px
-classDef core fill:#1e3a8a,stroke:#60a5fa,color:#eff6ff,stroke-width:2px
-classDef infra fill:#064e3b,stroke:#10b981,color:#ecfdf5,stroke-width:2px
+classDef main fill:#0f172a,stroke:#10b981,color:#f8fafc,stroke-width:2px
+classDef core fill:#064e3b,stroke:#34d399,color:#eff6ff,stroke-width:2px
+classDef infra fill:#022c22,stroke:#059669,color:#ecfdf5,stroke-width:2px
 classDef aux fill:#292524,stroke:#f59e0b,color:#fef3c7,stroke-width:2px
 classDef hitl fill:#7c2d12,stroke:#fb923c,color:#fff7ed,stroke-width:2px
 
 %% ── TOP LAYER ──────────────────────
-User["👤 User"]:::main
+User["👤 DevOps Engineer"]:::main
 
 subgraph App["🖥️ Application Layer"]
     direction LR
@@ -167,11 +166,11 @@ class App main
 %% ── CORE SYSTEM ────────────────────
 subgraph Core["🧠 AI System"]
     direction TB
-    A1["Data Ingestion"]
-    A2["Anomaly Detection"]
-    A3["Risk / SLA Prediction"]
+    A1["Telemetry Ingestion"]
+    A2["Anomaly Detection (Z-Score)"]
+    A3["Bottleneck Prediction"]
     A4["Root Cause Analysis"]
-    A5["Decision Engine (LLM)"]
+    A5["Decision Engine (Gemini)"]
     A6["Action Executor"]
     A7["Audit Logger"]
 end
@@ -180,9 +179,9 @@ class Core core
 %% ── INFRASTRUCTURE ─────────────────
 subgraph Infra["☁️ Infrastructure"]
     direction LR
-    DB["🗄️ Data Store (Live + Audit)"]
-    LLM["🤖 LLM (Bedrock)"]
-    SIM["🎲 Simulation / Data Source"]
+    DB["🗄️ JSON Data Store (Live + Audit)"]
+    LLM["🤖 Gemini 3.1 Flash Lite"]
+    SIM["🎲 Stochastic Traffic Generator"]
 end
 class Infra infra
 
@@ -207,7 +206,7 @@ A5 --> LLM
 SIM --> DB
 
 %% HITL loop
-A6 -->|High-risk actions| H1
+A6 -->|P1/P2 Actions| H1
 H1 --> H2 --> A6
 ```
 
@@ -220,12 +219,12 @@ Each agent in the SmartAlloc pipeline is a pure function that updates a shared L
 
 | Agent | Responsibility | Input | Output | Failure Mode |
 |---|---|---|---|---|
-| **INGEST** | Reads live window from Local JSON Storage stream table | `window_minutes` config | Raw invoices + tickets arrays | Falls back to last successful window |
-| **ANOMALY** | Runs statistical detection across all invoices | Raw invoices | Anomaly findings + severity factors | Rule-based fallback (3× vendor average) |
-| **SLA** | Predicts breach probability for open tickets | Raw tickets | Breach risk list + penalty amounts | Rule-based fallback (capacity × volume threshold) |
-| **ROOT_CAUSE** | Classifies anomalies | Anomaly findings | Classified findings (spike/off-contract) | Uses top severity factor |
-| **DECISION** | Synthesizes action plan via Amazon Gemini 3.1 Flash Lite | All findings | JSON action plan (P1/P2/P3) | **Local Fallback Fallback** |
-| **ACTION** | Routes P3 to auto-execute, P1/P2 to DB | Action plan | Executed actions + pending queue | Logs failure, continues pipeline |
+| **INGEST** | Reads live window from telemetry streams | `window_minutes` config | Raw metrics + nodes array | Falls back to last successful window |
+| **ANOMALY** | Runs statistical detection across compute nodes | Raw metrics | Anomaly findings (over/under allocation) | Rule-based baseline (Z-Score fallback) |
+| **BOTTLENECK**| Predicts SLA latency breach probability | Traffic volume | Breach risk list | Rule-based fallback (capacity threshold) |
+| **ROOT_CAUSE** | Classifies anomalies | Anomaly findings | Classified findings (idle/leak/spike) | Uses top severity factor |
+| **DECISION** | Synthesizes action plan via Gemini 3.1 Flash Lite | All findings | JSON action plan (P1/P2/P3) | **Local Offline Fallback Engine** |
+| **ACTION** | Routes P3 to auto-scale, P1/P2 to DB | Action plan | Executed actions + pending queue | Logs failure, continues pipeline |
 | **AUDIT** | Writes complete immutable event record | Full run state | Immutable audit entry | Retries 3× before failure |
 
 ---
@@ -234,11 +233,11 @@ Each agent in the SmartAlloc pipeline is a pure function that updates a shared L
 
 While the System Architecture dictates the *infrastructure*, the **LangGraph Orchestration Flow** controls the *cognitive logic*. 
 
-The orchestration pipeline is not a linear script; it is a cyclic, state-driven Graph built on `LangGraph.js`. The state machine marshals an immutable context object (containing `syntheticData`, `anomalies`, `actions`, and `approvals`) across seven discrete nodes.
+The orchestration pipeline is not a linear script; it is a cyclic, state-driven Graph built on `LangGraph.js`. The state machine marshals an immutable context object (containing `telemetry`, `anomalies`, `actions`, and `approvals`) across seven discrete nodes.
 
 ### How State is Compiled and Passed
-1.  **Node Execution:** An agent (e.g., the `AnomalyDetector`) receives the current state, executes its LLM chain bound to a specific prompt template, and appends its findings (like Z-score identified leakage points) back to the state object.
-2.  **Conditional Routing:** Edges between nodes dictate logic. For example, if the `DecisionEngine` determines an action is a `P1` (critical threshold) requiring human oversight, the graph conditionally routes to the `SLA/Approval` node instead of immediately executing.
+1.  **Node Execution:** An agent (e.g., the `AnomalyDetector`) receives the current state, executes its isolation algorithms, and appends its findings (like Z-score identified bottleneck points) back to the state object.
+2.  **Conditional Routing:** Edges between nodes dictate logic. For example, if the `DecisionEngine` determines a scale-up is a `P1` (critical threshold) requiring human oversight, the graph conditionally routes to the `Approval Queue` node instead of immediately executing.
 3.  **State Preservation:** The final payload represents a deterministic ledger of the complete run, tracking exactly which model provided which rationalization.
 
 > 📸 **Trace Telemetry:** Expanding the raw JSON payload of a single autonomous graph transition.
@@ -247,31 +246,31 @@ The orchestration pipeline is not a linear script; it is a cyclic, state-driven 
 ```mermaid
 flowchart TB
     %% Definitions
-    classDef startEnd fill:#000,stroke:#333,stroke-width:4px,color:#fff
-    classDef agent fill:#1d4ed8,stroke:#93c5fd,stroke-width:2px,color:#fff,rx:10,ry:10
-    classDef llm fill:#b45309,stroke:#fde68a,stroke-width:2px,color:#fff,rx:5,ry:5
-    classDef action fill:#047857,stroke:#a7f3d0,stroke-width:2px,color:#fff
+    classDef startEnd fill:#000,stroke:#10b981,stroke-width:4px,color:#fff
+    classDef agent fill:#047857,stroke:#34d399,stroke-width:2px,color:#fff,rx:10,ry:10
+    classDef llm fill:#06b6d4,stroke:#67e8f9,stroke-width:2px,color:#fff,rx:5,ry:5
+    classDef action fill:#059669,stroke:#6ee7b7,stroke-width:2px,color:#fff
     classDef human fill:#be185d,stroke:#fbcfe8,stroke-width:2px,color:#fff
     
     Start((Trigger)) --> Ingest
     
     subgraph Data Processing
         Ingest[🔍 1. Ingest Agent<br/><small>Reads 30m rolling window</small>]
-        Anomaly[🧮 2. Anomaly Agent<br/><small>Isolation algorithms</small>]
-        SLA[⏳ 3. SLA Agent<br/><small>Statistical breach prediction</small>]
+        Anomaly[🧮 2. Anomaly Agent<br/><small>Z-Score algorithms</small>]
+        SLA[⏳ 3. Bottleneck Agent<br/><small>Statistical breach prediction</small>]
         RC[🧠 4. Root Cause Agent<br/><small>Groups & contextualizes</small>]
         
         Ingest ==> Anomaly ==> SLA ==> RC
     end
     
     subgraph Cognitive Layer
-        Decide{⚖️ 5. Decision Agent<br/><small>Synthesizes Action Plan</small>}
-        Nova[Amazon Gemini 3.1 Flash Lite<br/><small>Primary Logic Engine</small>]
-        Mistral[Local Fallback<br/><small>Failover Logic Engine</small>]
+        Decide{⚖️ 5. Decision Agent<br/><small>Synthesizes Scaling Plan</small>}
+        Nova[Google Gemini 3.1 Flash Lite<br/><small>Primary Logic Engine</small>]
+        Mistral[Local Embedded Heuristics<br/><small>Failover Logic Engine</small>]
         
         RC ==> Decide
-        Decide -.->|Primary Call| Nova
-        Decide -.->|Fallback Call| Mistral
+        Decide -.->|Primary API Call| Nova
+        Decide -.->|Offline/No-Key Fallback| Mistral
     end
     
     subgraph Execution & Routing
@@ -280,8 +279,8 @@ flowchart TB
         HITL((👤 Human-in-Loop<br/>Priority 1 & 2))
         
         Decide ==> Route
-        Route -->|Low Risk Mitigation| Auto
-        Route -->|High Risk Strategic| HITL
+        Route -->|Safe Scale-Downs| Auto
+        Route -->|Critical Interventions| HITL
     end
     
     subgraph Security & Compliance
@@ -306,17 +305,17 @@ flowchart TB
 ```mermaid
 flowchart LR
     subgraph External["External Sources"]
-        ERP[Enterprise ERP<br/>simulated]
+        ERP[Cloud Telemetry<br/>simulated]
     end
     
-    subgraph Storage1["Data Lake (Local JSON Storage)"]
-        Stream[(live-stream<br/>table)]
+    subgraph Storage1["Data Lake (Local JSON)"]
+        Stream[(stream.json<br/>table)]
     end
     
     subgraph Process["AI Processing Pipeline"]
         AD[Anomaly Detection<br/>Model]
-        SLA[SLA Breach<br/>Predictor]
-        LLM[Bedrock LLM<br/>Gemini 3.1 Flash Lite]
+        SLA[Bottleneck<br/>Predictor]
+        LLM[Gemini 3.1<br/>Flash Lite]
     end
     
     subgraph Execution["Execution Routing"]
@@ -325,19 +324,19 @@ flowchart LR
     end
     
     subgraph Storage2["Permanent Storage"]
-        App[(approvals<br/>table)]
-        Aud[(audit-log<br/>table)]
+        App[(approvals.json)]
+        Aud[(audit.json)]
     end
     
     subgraph UI["Presentation"]
         Dash[Next.js 14<br/>Dashboard]
     end
     
-    ERP -->|Injects Invoices & Tickets| Stream
+    ERP -->|Injects Metrics & Load| Stream
     Stream -->|30-min rolling window| AD
     AD --> SLA
     SLA --> LLM
-    LLM -->|Structured Action Plan| Execution
+    LLM -->|Structured Scaling Plan| Execution
     P3 --> Aud
     P12 --> App
     App -->|Approved| Aud
@@ -352,18 +351,17 @@ flowchart LR
 | Layer | Technology | Version | Why This Choice |
 |---|---|---|---|
 | Frontend Framework | Next.js | 14.2.15 | App Router, Server Components, API routes in one repo |
-| Language | TypeScript | 5.x | Type safety across agents, state, and AWS SDK calls |
+| Language | TypeScript | 5.x | Type safety across agents, state, and API calls |
 | UI Components | React | 18.3 | Concurrent rendering for live feed updates |
 | Animations | Framer Motion | 11.11 | Smooth metric transitions during live pipeline runs |
-| Charts | Recharts | 2.13 | Financial waterfall and time-series charts |
-| Styling | Tailwind CSS | 3.4 | Utility-first, dark theme, rapid iteration |
+| Charts | Recharts | 2.13 | Resource waterfall and time-series charts |
+| Styling | Tailwind CSS | 3.4 | Utility-first, customized Neon Green / Emerald theme |
 | Agent Orchestration | LangGraph.js | 0.2.19 | Stateful multi-agent graphs with conditional routing |
-| LLM Reasoning | Google Gemini 3.1 Flash Lite | v1:0 | Optimized for speed and cost while maintaining high reasoning capabilities |
-| LLM Fallback | Google Gemini Local Fallback | 2402-v1:0 | Automatic failover — pipeline never stops |
-| Storage | Local Filesystem | SDK v3 | Persistent storage for immutable JSON audit reports |
-| Database | AWS Local JSON Storage | SDK v3 | Serverless, pay-per-request, TTL for auto-cleanup |
-| Mock Data | @faker-js/faker | 9.2 | Realistic Indian enterprise names and patterns |
-| Localisation | Intl.NumberFormat | ES | `en-IN` formatting (`formatINR`) for Rupee displays |
+| LLM Reasoning | Google Gemini 3.1 Flash Lite | v1alpha | Optimized for ultra-fast, structured Gen AI recommendations |
+| LLM Fallback | Embedded Heuristic Engine | Local | Automatic failover — demo never stops even offline |
+| Storage | Vercel `/tmp` Compatible FS | Native | Persistent storage for JSON audit reports |
+| Database | Local JSON File System | Native | Zero-dependency, zero-setup data layer |
+| Mock Data | Custom Stochastic Simulator | Local | Realistic node scaling, CPU load, and capacity spikes |
 
 ---
 
@@ -378,7 +376,7 @@ SmartAlloc/
 │   │   ├── simulation/page.tsx       # /simulation — Sim Lab pipeline trigger
 │   │   ├── actions/page.tsx          # /actions — Execution & HITL actions
 │   │   ├── anomalies/page.tsx        # /anomalies — Risks & Analysis feed
-│   │   ├── sla/page.tsx              # /sla — Impact / Working Capital page
+│   │   ├── sla/page.tsx              # /sla — Impact / Efficiency page
 │   │   ├── audit/page.tsx            # /audit — Technical trace logging
 │   │   └── api/                      # Next.js specific serverless API routes
 │   │       ├── pipeline/route.ts     # Triggers AI simulation + LangGraph agents
@@ -389,7 +387,7 @@ SmartAlloc/
 │   │       └── status/route.ts       # Live system polling
 │   │
 │   ├── components/                   # React UI presentational components
-│   │   └── GlobalNav.tsx             # Navbar with gradient branding
+│   │   └── GlobalNav.tsx             # Navbar with gradient neon branding
 │   │
 │   ├── ai_agents/                    # LangGraph.js pipeline logic
 │   │   ├── orchestrator.ts           # Wires the graph and conditional routing
@@ -397,22 +395,20 @@ SmartAlloc/
 │   │   └── nodes.ts                  # Logic for all 7 independent agents
 │   │
 │   ├── synthetic_data_engine/
-│   │   └── simulator.ts              # 6-scenario engine driving data streams
+│   │   └── simulator.ts              # 6-scenario engine driving telemetry
 │   │
-│   ├── aws/                          # AWS integrations
-│   │   ├── config.ts                 # Resource configurations
-│   │   ├── dynamo.ts                 # Database wrappers
-│   │   ├── bedrock.ts                # Dual-model LLM abstraction
-│   │   └── deploy/
-│   │       └── create_tables.ts      # Instantiates Local JSON Storage tables
+│   ├── services/                     # Backend local services
+│   │   ├── db.ts                     # Local JSON database wrapper
+│   │   ├── gemini.ts                 # Google Gemini Flash Lite integration
+│   │   └── storage.ts                # File system persistence
 │   │
 │   └── lib/                          # App utilities
-│       └── formatINR.ts              # Financial presentation logic
+│       └── formatters.ts             # Value formatting logic
 │
 ├── docs/screenshots/                 # README demonstration imagery
 ├── .env.example                      # Environment variables template
-├── next.config.js                    # Next.js routing and build config
-├── package.json                      # NPM dependencies and scripts
+├── next.config.js                    # Next.js routing config
+├── package.json                      # NPM dependencies
 ├── tailwind.config.js                # Tailwind CSS styling and theme
 └── tsconfig.json                     # TypeScript compiler configuration
 ```
@@ -421,124 +417,117 @@ SmartAlloc/
 
 ## Simulation Scenarios
 
-The active scenario is chosen purely dynamically per run to stress-test the pipeline under different enterprise stressors. 
+The active scenario is chosen purely dynamically per run to stress-test the pipeline under different infrastructure stressors. 
 
 | Scenario | Description | Anomaly Rate | Breach Rate | Team Capacity | Spike Multiplier |
 |---|---|---|---|---|---|
-| `normal` | Routine week, low risk. Validates baseline operations. | 4% | 20% | 80% | 3–6× |
-| `vendor_spike` | IT and SaaS vendors overbilling. Tests cloud cost surges. | 12% | 28% | 75% | 5–15× |
-| `sla_crisis` | Monday morning ticket surge understaffing test. | 3% | 55% | 45% | 2–5× |
-| `audit_crunch` | Month-end bulk duplicate resubmissions test. | 9% | 35% | 70% | 2–4× |
-| `post_merger` | Integration chaos. Unmapped vendor contract testing. | 15% | 42% | 60% | 4–10× |
-| `festive_rush` | Bulk sequence masking legitimate anomalies. High volume. | 7% | 48% | 55% | 6–20× |
+| `normal` | Routine day, low traffic. Validates baseline operations. | 4% | 20% | 80% | 3–6× |
+| `peak_sprint` | Heavy engineering merge day. Tests CI/CD pipeline compute limits. | 12% | 28% | 75% | 5–15× |
+| `team_scaling` | Onboarding influx. Simulates over-assigned access. | 3% | 55% | 45% | 2–5× |
+| `cloud_migration` | Massive data shifts. Tests storage and IOPS bottlenecks. | 9% | 35% | 70% | 2–4× |
+| `product_launch` | High-traffic Go-To-Market surge. GPU/CPU spiking test. | 15% | 42% | 60% | 4–10× |
+| `quarter_end` | Budget consolidation. Focuses on terminating idle resources. | 7% | 48% | 55% | 6–20× |
 
 > 📸 **Anomalies Detection Module:** Intelligent risk tracking mapped to scenario inputs.
-> ![Anomaly Detection](docs/screenshots/anomalies.png)
+> ![Anomaly Detection](docs/screenshots/risk_matrix_v2.png)
 
 ---
 
-## AWS Infrastructure
+## Infrastructure Setup
 
-### Local JSON Storage Tables
-1. `stream.json` — **TTL: 24h**. Rolling window of simulated ERP invoices and tickets.
-2. `audit.json` — **TTL: None**. Permanent immutable system event tracing ledger.
-3. `approvals.json` — **TTL: 48h**. Temporary persistence for pending & reviewed HITL decisions.
+SmartAlloc entirely eliminates complex database provisioning for hackathon ease-of-use.
 
-### Bedrock Calling Strategy
-The `Gemini GenerateContent API` is utilized natively for Gemini 3.1 Flash Lite to take advantage of its excellent structural adherence and reasoning logic. If restricted or timed out, the `InvokeModel API` intercepts the traffic via a generic text-generation prompt designed specifically to wrap structural constraints onto Local Fallback models, keeping the pipeline unbroken.
+### Local JSON Storage
+1. `stream.json` — Rolling window of simulated infrastructure metrics.
+2. `audit.json` — Permanent immutable system event tracing ledger.
+3. `approvals.json` — Temporary persistence for pending & reviewed HITL scaling decisions.
+
+### Gemini Calling Strategy
+The `Google Gemini API` is utilized natively for `gemini-3.1-flash-lite-preview` to take advantage of its excellent structural adherence and reasoning logic. If no key is provided, or if the API limits are hit, the application **automatically reroutes** to an internal, mathematically driven local simulation engine that dynamically formats responses identically to Gemini, keeping the pipeline completely unbroken for seamless live presentations.
 
 ---
 
 ## 🔮 The Full-Scale Production Vision: Where This Is Going
 
-While the current SmartAlloc platform serves as a high-fidelity prototype using synthesized data streams, the architecture was explicitly built to seamlessly transition into a **live, multi-cloud enterprise operational environment**. 
+While the current SmartAlloc platform serves as a high-fidelity prototype using synthesized telemetry streams, the architecture was explicitly built to seamlessly transition into a **live, multi-cloud enterprise infrastructure environment**. 
 
-Here is exactly how the system maps from its current state to a fully-scaled enterprise deployment:
+Here is exactly how the system maps from its current state to a fully-scaled deployment:
 
-### 1. Data Ingestion: From Simulation to Live ERP Polling
-* **Current:** A synthetic engine generates stochastic financial anomalies and SLA capacity crunches.
-* **Production Scale:** The `Ingest Agent` will connect directly to enterprise systems of record.
-  * **Finance Data:** Direct REST/SOAP API integration with **SAP S/4HANA**, **Oracle NetSuite**, or **Coupa** to ingest purchase orders, invoice receipts, and vendor contracts in real time.
-  * **Operations Data:** Webhooks securely tied to **ServiceNow**, **Jira Service Management**, or **Zendesk** to monitor ticket SLA lifecycles and human agent capacities.
-  * **Data Lake Infrastructure:** All raw operational telemetry will route through an Amazon Kinesis Data Stream into a central S3 Data Lake before hitting the LangGraph pipeline.
+### 1. Data Ingestion: From Simulation to Live Telemetry
+* **Current:** A synthetic engine generates stochastic compute load and memory leaks.
+* **Production Scale:** The `Ingest Agent` will connect directly to enterprise telemetry systems.
+  * **Compute Data:** Direct REST API integration with **Datadog**, **AWS CloudWatch**, or **Prometheus** to ingest CPU, GPU, Memory, and IOPS metrics in real-time.
+  * **Operations Data:** Webhooks securely tied to **Kubernetes Control Plane** or **Terraform State** to monitor node counts and configurations.
+  * **Data Lake Infrastructure:** All raw operational telemetry will route through Kafka into a central data lake before hitting the LangGraph pipeline.
 
-### 2. Threat Detection: From Heuristics to Deep Learning
+### 2. Threat Detection: From Z-Scores to Deep Learning
 
-> 📸 **Risk Assessment UI:** Identifying Off-Contract and Duplicate leakage events in real-time.
-> ![Risk Assessment Matrix](docs/screenshots/risk_matrix_v2.png)
+> 📸 **Risk Assessment UI:** Identifying Idle Instances and Bottlenecks in real-time.
+> ![Risk Assessment Matrix](docs/screenshots/anomalies.png)
 
-* **Current:** We utilize an optimized Isolation Forest-inspired statistical standard deviation matrix.
+* **Current:** We utilize an optimized Z-Score statistical standard deviation matrix.
 * **Production Scale:** 
-  * Enterprise anomalies operate in high dimensions. We will deploy clustered **XGBoost ensembles** and **Autoencoders** continuously trained via AWS SageMaker on the corporation's historical spend data.
-  * The production models will dynamically track complex patterns: multi-year vendor price-creep, shadow IT unapproved software subscriptions, and fractional duplicate billing spanning across multiple business units and geographic currencies.
+  * Enterprise infrastructure operates in high dimensions. We will deploy clustered **Autoencoders** continuously trained to map standard application traffic baselines.
+  * The production models will dynamically track complex patterns: multi-service cascading failures, silent memory leaks over months, and zombie nodes disconnected from load balancers.
 
 ### 3. Execution & Corrective Action: Seamless Enterprise Intervention
 * **Current:** Actions are routed to a simulated execution queue on the Dashboard Actions Page.
-* **Production Scale:** The `Action Agent` gains secure Write-access via highly restricted IAM roles to intervene *before* cash leaves the business.
-  * **Automated Intervention (P3):** Instantly hits the SAP API to place a "Payment Hold" flag on a confirmed duplicate invoice before the nightly treasury payment run clears.
-  * **Human Approvals (P1/P2):** Integrates directly into workflows via **Slack** or **Microsoft Teams**. The CFO receives an interactive Slack card showing the anomaly, the Amazon Gemini 3.1 Flash Lite structural reasoning, and a one-click `[Approve Hold]` or `[Override]` button. 
+* **Production Scale:** The `Action Agent` gains secure Write-access via highly restricted IAM roles to intervene *before* downtime occurs.
+* **Automated Intervention (P3):** Instantly hits the AWS EC2 API to terminate orphaned instances or scale down over-provisioned dev clusters overnight.
+* **Human Approvals (P1/P2):** Integrates directly into workflows via **Slack** or **Microsoft Teams**. The Lead DevOps Engineer receives an interactive Slack card showing the bottleneck, the Gemini 3.1 Flash Lite structural reasoning, and a one-click `[Approve Scale Up]` or `[Override]` button. 
 
 ### 4. Security, Compliance, & Infrastructure Scaling
-* **Role-Based Access Control (RBAC):** Implementation of strict JWT/OAuth2 flows via AWS Cognito. Vendor management teams can only review P2 actions strictly related to their specific vendor portfolio.
-* **SOC-2 Immutable Ledgers:** The current Local JSON Storage audit log will be fortified using **Amazon QLDB (Quantum Ledger Database)**, ensuring that every LLM decision is cryptographically signed, tamper-proof, and instantly verifiable by external financial auditors.
-* **Multi-AZ Kubernetes Scaling:** The Next.js dashboard and LangGraph pipelines will be containerized via Docker and orchestrated on Amazon EKS (Elastic Kubernetes Service), allowing the system to auto-scale from 100 invoices/day to 10,000,000 invoices/day seamlessly during corporate month-end financial closes.
+* **Role-Based Access Control (RBAC):** Implementation of strict OAuth flows. Engineering managers can only approve actions strictly related to their specific team's clusters.
+* **Immutable Ledgers:** The current Local JSON audit log will be fortified using **Immutable S3 Object Locks** or Blockchain ledgers, ensuring that every LLM scaling decision is cryptographically signed and instantly verifiable by security teams.
 
 ---
 
-## The Financial Impact Model
+## The Efficiency Impact Model
 
-We model our impact projection using conservative figures tied to a fictional but completely standard mid-cap Indian corporation.
+We model our impact projection using conservative figures tied to a standard tech enterprise running large-scale cloud infrastructure.
 
 ```text
 ================================================================
-IMPACT CALCULATION FOR A ₹500 CRORE PROCUREMENT BUDGET
+IMPACT CALCULATION FOR A $10,000,000 COMPUTE BUDGET
 ================================================================
 
-Assumption 1: Industry Leakage
-  ₹500 Cr × 5% = ₹25 Crore estimated cost leakage annually
+Assumption 1: Industry Resource Waste
+  $10M × 30% = $3,000,000 estimated compute leakage annually
 
 Assumption 2: SmartAlloc Recovery Rate
-  ₹25 Cr × 85% conservative mitigation = ₹21.25 Crore
+  $3M × 85% conservative mitigation = $2,550,000
 
-Assumption 3: SLA Penalty Protections
-  1,000 tickets/month × 8% breach probability × ₹50,000 avg penalty
-  = ₹40 Lakh/month = ₹4.8 Cr/year penalty risk
-  SmartAlloc proactive intervention at 70% success = ₹3.36 Crore savings
+Assumption 3: SLA Penalty & Downtime Protections
+  10 critical incidents/month × 15% breach prob × $50,000 avg downtime cost
+  = $75,000/month = $900,000/year risk
+  SmartAlloc proactive auto-scaling at 80% success = $720,000 savings
 
-TOTAL ANNUAL ENTERPRISE VALUE DELIVERED: ₹24.61 Crore Return
+TOTAL ANNUAL ENTERPRISE VALUE DELIVERED: $3,270,000 Return
 ================================================================
 ```
 
-> 📸 **Working Capital Protected:** Real-time demonstration of value creation.
+> 📸 **Compute Efficiency Protected:** Real-time demonstration of value creation.
 > ![Financial Impact Engine](docs/screenshots/impact.png)
-
----
 
 ---
 
 ## 🚀 Vercel Deployment Guide
 
-SmartAlloc is optimized for a zero-trust, serverless deployment on **Vercel**.
+SmartAlloc is heavily optimized for a zero-trust, serverless deployment on **Vercel** with local JSON storage handling the backend seamlessly.
 
 ### 1. Repository Connection
-Connect your GitHub repository to the **Vercel Console**. Amplify will automatically detect the Next.js 14 settings and configure the build settings.
+Connect your GitHub repository to the **Vercel Dashboard**. Vercel will automatically detect the Next.js 14 settings and configure the build perfectly out of the box.
 
-### 2. IAM Service Role (CRITICAL)
-Since the application runs serverless, it uses an **IAM Service Role** instead of static access keys for maximum security.
-1. Create an IAM Role with `AmazonS3FullAccess`, `AmazonLocal JSON StorageFullAccess`, and `AmazonBedrockFullAccess`.
-2. Assign this role as the **Service Role** in your Amplify App settings.
+### 2. File System Compatibility
+Vercel serverless environments are generally read-only. We have built a native abstraction layer (`src/services/db.ts` & `src/services/storage.ts`) that automatically detects the `VERCEL=1` environment and writes all database states to the ephemeral `/tmp` directory to prevent crashes while remaining functional for demonstrations.
 
 ### 3. Environment Variables
-Configure the following non-reserved variables in the Amplify Console:
-* `REGION`: `us-east-1` (or your preferred Bedrock region)
-* `APP_MODE`: `cloud`
-* `S3_BUCKET`: `reports/`
-* `DYNAMO_STREAM_TABLE`: `stream.json`
-* `DYNAMO_AUDIT_TABLE`: `audit.json`
-* `DYNAMO_APPROVAL_TABLE`: `approvals.json`
+Configure the following variable in the Vercel Console:
+* `GEMINI_API_KEY`: *(Your Google AI Studio Key)*
+*(If left blank, the app will seamlessly use its intelligent fallback engine!)*
 
 ### 4. Build & Deploy
-Once pushed, Amplify will build the NextJS application, instantiate the serverless functions, and map the environment variables. The application will be live at your `.amplifyapp.com` domain.
+Once pushed, click deploy. The application will be live instantly. 
 
 ---
 
@@ -552,17 +541,13 @@ npm install
 
 # 2. Configure Local Environment
 cp .env.example .env
-# Edit .env and supply your local AWS credentials
+# Edit .env and supply your GEMINI_API_KEY (optional)
 
-# 3. Provision AWS Tables
-# This script must be run once to instantiate the Local JSON Storage tables in your region
-npx ts-node src/services/db.ts
+# 3. Start Development Server
+npm run dev
 
-# 4. Deploy to Vercel
-# 1. Connect this repo to the Vercel Console.
-# 2. Set the Environment Variables listed below.
-# 3. Attach an IAM Role to the Amplify App with Bedrock/Local JSON Storage/S3 permissions.
-# 4. Trigger build.
+# The app is now live at http://localhost:3000
+# The Local JSON databases (.smartalloc-data/) will be automatically generated upon first pipeline run.
 ```
 
 ---
@@ -571,15 +556,9 @@ npx ts-node src/services/db.ts
 
 | Variable | Requirement | Description |
 |---|---|---|
-| `REGION` | **Required** | Target AWS Region (e.g., `us-east-1`) |
-| `APP_MODE` | **Required** | Set to `cloud` for Amplify or `local` for dev |
-| `S3_BUCKET` | **Required** | The S3 bucket name for report storage |
-| `DYNAMO_STREAM_TABLE` | **Required** | The Local JSON Storage table for live data |
-| `DYNAMO_AUDIT_TABLE` | **Required** | The Local JSON Storage table for audit logs |
-| `DYNAMO_APPROVAL_TABLE` | **Required** | The Local JSON Storage table for approvals |
-| `BEDROCK_PRIMARY_MODEL` | Optional | Default: `gemini-3.1-flash-lite-preview` |
-| `AWS_ACCESS_KEY_ID` | *Local Only* | Not used in `cloud` mode (IAM Role preferred) |
-| `AWS_SECRET_ACCESS_KEY` | *Local Only* | Not used in `cloud` mode (IAM Role preferred) |
+| `GEMINI_API_KEY` | Optional | Your Google Gemini API Key |
+| `GEMINI_MODEL` | Optional | Default: `gemini-3.1-flash-lite-preview` |
+| `APP_MODE` | Optional | Set to `local` for file-system storage. |
 
 ---
 
@@ -588,7 +567,7 @@ npx ts-node src/services/db.ts
 ### Key Page Routes
 - `/`: The cinematic narrative overview.
 - `/simulation`: Execution lab to manually trace agent activities and stream statuses.
-- `/actions`: Prioritization routing desk. Houses the interactive HITL (Human-in-the-Loop) interfaces for P1/P2 approvals.
+- `/actions`: Prioritization routing desk. Houses the interactive HITL (Human-in-the-Loop) interfaces for P1/P2 scale approvals.
 - `/anomalies`: Detection feed listing items mapped accurately back to standard operational processes.
 - `/sla`: Enterprise value tracking engine calculating running returns on the infrastructure deployment.
 - `/audit`: Security-led technical tracing ledger pulling immutable histories from Local JSON Storage.
@@ -615,7 +594,7 @@ Extend testing coverage via the simulation engine effortlessly:
 // Open src/synthetic_data_engine/simulator.ts
 export const SCENARIOS = {
   // Add an custom behavior profile context
-  fiscal_year_close: {
+  database_migration: {
     anomalyRate:     0.18,   // High pressure risk spikes
     spikeMultiplier: [2, 7], // Moderate rate inflation 
     breachRate:      0.22,   // Stabilized service impacts
@@ -633,7 +612,7 @@ The architecture natively folds this context into detection baselines without ad
 We love to collaborate on extending this framework further. Contributions standard via fork & pull request branches alongside accompanying testing.
 
 ### MIT License
-This software is provided "AS IS", completely open-sourced to encourage iterative optimization against the complex nature of cost leakages. 
+This software is provided "AS IS", completely open-sourced to encourage iterative optimization against the complex nature of resource inefficiencies.
 
 ---
 
@@ -644,7 +623,7 @@ This software is provided "AS IS", completely open-sourced to encourage iterativ
   * 💻 [GitHub Profile](https://github.com/adarshcod30)
   * 🔗 [LinkedIn Profile](https://www.linkedin.com/in/adarshdwivedi30)
   * *Adarsh is a passionate software engineer specializing in AI-driven enterprise applications and full-stack development. By integrating sophisticated large language models with reliable backend architectures, he focuses on building scalable autonomous systems that solve real-world problems.*
-* **AWS Bedrock** for unlocking advanced programmatic reasoning mechanics at minimal latencies.
+* **Google Gemini** for unlocking advanced programmatic reasoning mechanics at minimal latencies.
 * **LangChain** for `LangGraph.js` making stateful routing structurally sustainable.
 
 <br />
