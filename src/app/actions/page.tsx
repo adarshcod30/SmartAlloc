@@ -74,7 +74,7 @@ export default function ActionsPage() {
                <span className="text-[10px] font-black uppercase tracking-[0.4em]">Autonomous Rebalancing</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-black tracking-tighter mb-6">
-              AI Actions & <span className="text-white/60">HITL.</span>
+              Recommended <span className="text-white/60">Actions.</span>
             </h1>
             <p className="text-white/60 text-xl font-medium tracking-tight leading-relaxed">
               Control the autonomous boundary. SmartAlloc executes low-risk resource rebalancing instantly, 

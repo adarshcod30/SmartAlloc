@@ -21,7 +21,6 @@ async function callGemini(prompt: string): Promise<string> {
         generationConfig: {
           temperature: 0.15,
           maxOutputTokens: 4096,
-          responseMimeType: 'application/json',
         },
       }),
     });

@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 const navItems = [
   { name: "Overview", href: "/" },
   { name: "Allocation Lab", href: "/simulation" },
-  { name: "Reallocations", href: "/actions" },
+  { name: "Recommended Actions", href: "/actions" },
   { name: "Inefficiencies", href: "/anomalies" },
   { name: "Efficiency", href: "/sla" },
   { name: "Audit Trail", href: "/audit" },

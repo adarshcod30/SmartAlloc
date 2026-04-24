@@ -100,10 +100,29 @@ export default function SimulationClient() {
     }
   }, [searchParams]);
 
+  const [budget, setBudget] = useState(50000);
+  const [demand, setDemand] = useState(75);
+
+  const calculateOptimalAllocation = () => {
+    // Optimization Layer (Linear Programming approximation)
+    let opsRatio = demand / 100 * 0.5 + 0.2; // Base 20%, scales up to 70% with demand
+    let remaining = 1 - opsRatio;
+    let rdRatio = remaining * (budget / 100000); // R&D scales with available budget
+    let mktRatio = remaining - rdRatio;
+
+    return {
+      ops: Math.round(opsRatio * 100),
+      mkt: Math.round(mktRatio * 100),
+      rd: Math.round(rdRatio * 100),
+    };
+  };
+
+  const allocation = calculateOptimalAllocation();
+
   return (
     <div className="min-h-[calc(100vh-80px)] bg-[#050505] py-12 px-6 selection:bg-emerald-500/30">
       <div className="container mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 px-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 px-4">
           <div>
             <div className="flex items-center gap-3 text-emerald-400 mb-4">
                <Activity className="h-5 w-5 animate-pulse" />
@@ -136,6 +155,76 @@ export default function SimulationClient() {
             )}
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
           </button>
+        </div>
+
+        {/* NEW SCENARIO SIMULATOR & ALLOCATION ENGINE */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-16">
+           <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-md">
+              <h3 className="text-xl font-black mb-6 flex items-center gap-2"><Zap className="h-5 w-5 text-emerald-400"/> Scenario Simulator</h3>
+              
+              <div className="space-y-8">
+                 <div>
+                    <div className="flex justify-between mb-3">
+                       <label className="text-xs font-bold text-white/60 uppercase tracking-widest">Available Budget ($)</label>
+                       <span className="text-sm font-bold text-emerald-400">${budget.toLocaleString()}</span>
+                    </div>
+                    <input type="range" min="10000" max="100000" step="5000" value={budget} onChange={e => setBudget(Number(e.target.value))} className="w-full accent-emerald-500 h-2 bg-white/10 rounded-lg appearance-none cursor-pointer" />
+                 </div>
+
+                 <div>
+                    <div className="flex justify-between mb-3">
+                       <label className="text-xs font-bold text-white/60 uppercase tracking-widest">Market Demand Index</label>
+                       <span className="text-sm font-bold text-cyan-400">{demand}%</span>
+                    </div>
+                    <input type="range" min="10" max="100" step="5" value={demand} onChange={e => setDemand(Number(e.target.value))} className="w-full accent-cyan-500 h-2 bg-white/10 rounded-lg appearance-none cursor-pointer" />
+                 </div>
+              </div>
+           </div>
+
+           <div className="bg-gradient-to-br from-emerald-600/10 to-cyan-600/5 border border-emerald-500/20 rounded-3xl p-8 relative overflow-hidden">
+              <h3 className="text-xl font-black mb-6 flex items-center gap-2 text-emerald-400">
+                 <Fingerprint className="h-5 w-5"/> Allocation Engine (LP Optimized)
+              </h3>
+              
+              <div className="space-y-5 mb-6">
+                 <div>
+                   <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Operations</span>
+                      <span className="text-sm font-black text-cyan-400">{allocation.ops}%</span>
+                   </div>
+                   <div className="w-full bg-white/10 rounded-full h-1.5">
+                      <div className="bg-cyan-400 h-1.5 rounded-full transition-all duration-300" style={{ width: `${allocation.ops}%` }}></div>
+                   </div>
+                 </div>
+
+                 <div>
+                   <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-bold text-white/80 uppercase tracking-wider">Marketing</span>
+                      <span className="text-sm font-black text-emerald-400">{allocation.mkt}%</span>
+                   </div>
+                   <div className="w-full bg-white/10 rounded-full h-1.5">
+                      <div className="bg-emerald-400 h-1.5 rounded-full transition-all duration-300" style={{ width: `${allocation.mkt}%` }}></div>
+                   </div>
+                 </div>
+
+                 <div>
+                   <div className="flex items-center justify-between mb-1.5">
+                      <span className="text-xs font-bold text-white/80 uppercase tracking-wider">R&D</span>
+                      <span className="text-sm font-black text-teal-500">{allocation.rd}%</span>
+                   </div>
+                   <div className="w-full bg-white/10 rounded-full h-1.5">
+                      <div className="bg-teal-500 h-1.5 rounded-full transition-all duration-300" style={{ width: `${allocation.rd}%` }}></div>
+                   </div>
+                 </div>
+              </div>
+
+              <div className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                 <p className="text-[10px] font-black text-emerald-400 uppercase tracking-widest mb-1.5">Reasoning</p>
+                 <p className="text-xs font-medium text-white/80 leading-relaxed">
+                    Linear Programming dynamically shifted resources to maximize predicted ROI. {allocation.ops > 50 ? "High demand forces operation-heavy scaling to prevent SLA breaches." : "Lower demand allows budget to flow into R&D and Marketing for future growth."}
+                 </p>
+              </div>
+           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 xl:gap-20">

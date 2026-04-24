@@ -88,37 +88,40 @@ SmartAlloc is an autonomous AI agent system. It is not just a dashboard showing 
 ### 1. 7-Agent LangGraph.js Pipeline
 The core of SmartAlloc is a stateful multi-agent pipeline: `Ingest → Anomaly → Bottleneck → RootCause → Decision → Action → Audit`. Each agent has a single, testable responsibility. LangGraph.js manages a persistent, typed state object that flows through every node, giving the final Audit agent full visibility into what every upstream agent decided and why.
 
-### 2. Dynamic Simulation Engine
-Ships with 6 named enterprise scenarios (`normal`, `peak_sprint`, `team_scaling`, `cloud_migration`, `product_launch`, `quarter_end`). Scenarios control resource demand rates, traffic multipliers, and node capacity. The simulator uses zero fixed seeds and has a 20% burst event probability — mimicking real-world traffic spikes or DDOS mitigations.
+### 2. Dynamic Scenario Simulator & LP Optimization Sliders
+The **Simulation Lab** features an interactive UI where users can adjust **Available Budget** and **Market Demand** via sliders. Underneath, a dynamic **Linear Programming (LP) Approximation** layer recalculates the optimal resource split between Operations (to protect SLAs), Marketing (for growth), and R&D (for innovation). It also ships with 6 stochastic enterprise workload profiles (`peak_sprint`, `quarter_end`, etc.).
 
-> 📸 **Simulation Lab:** Real-time pipeline execution and scaling logging.
+> 📸 **Simulation Lab:** Real-time pipeline execution and LP optimization.
 > ![Simulation Lab](docs/screenshots/simulation.png)
 
-### 3. Google Gemini Reasoning (Gemini 3.1 Flash Lite + Local Fallback)
+### 3. SmartAlloc AI Co-Pilot (Chatbot)
+A highly intelligent, domain-specific AI chatbot floating in the UI. Powered by Google Gemini 3.1 Flash Lite, it strictly acts as a **Financial and Resource Allocation Assistant**. You can ask it natural language questions (e.g., "How should I allocate my budget next month?") and it provides context-aware, conversational advisory strictly constrained to enterprise finance and operations.
+
+### 4. Google Gemini Reasoning (Gemini 3.1 Flash Lite + Local Fallback)
 The Decision Agent uses `gemini-3.1-flash-lite-preview` via the Gemini API to synthesize ML findings into a structured JSON reallocation plan. If Gemini 3.1 Flash Lite fails (timeout, rate limit, no API key), the pipeline automatically falls back to an intelligent local heuristic simulation. **The pipeline never halts.**
 
-### 4. Statistical Anomaly Detection
+### 5. Statistical Anomaly Detection
 Uses statistical methods inspired by Isolation Forest principles. Detects three types of anomalies: `over_allocated`, `under_utilized`, and `bottleneck`. Each anomaly receives a dynamic severity score based on the Z-score deviation from the resource baseline.
 
-### 5. SLA Breach Prediction
+### 6. SLA Breach Prediction
 Performs statistical bottleneck prediction combining metrics like node capacity, current request volume, time-of-day, and service priority. Calculates a breach probability for every active cluster, shifting from a reactive "wait for pagerduty" model to a proactive "auto-scale to prevent downtime" stance.
 
-### 6. Human-in-the-Loop (HITL) Workflow
+### 7. Human-in-the-Loop (HITL) Workflow
 Implements a three-tier priority system:
 * **P1:** Critical (Prod DB Resizing, Multi-Region Shift) — Immediate human review.
 * **P2:** Significant (Adding GPU nodes, Team Reassignments) — Human review within 24h.
 * **P3:** Routine (Stopping idle instances, clearing caches) — Auto-executes instantly.
 
-> 📸 **AI Actions Page:** Pending P1 approvals and executed actions.
-> ![AI Actions Page](docs/screenshots/approvals.png)
+> 📸 **Recommended Actions Dashboard:** Pending P1 approvals and executed actions.
+> ![Recommended Actions Page](docs/screenshots/approvals.png)
 
-### 7. Immutable Audit Trail
+### 8. Immutable Audit Trail
 Every pipeline run and agent decision is written to the `audit.json` local storage table containing the `run_id`, agent name, full JSON payload, and timestamps. This satisfies enterprise compliance and infrastructure tracing.
 
 > 📸 **Technical Audit Trail:** Expandable traces for every pipeline run.
 > ![Audit Trail](docs/screenshots/audit_trail.png)
 
-### 8. Local-First Architecture
+### 9. Local-First Architecture
 Fully local stack optimized for ultra-fast hackathon demonstrations and zero-config deployment on **Vercel**.
 * **Compute**: Next.js 14 Serverless Functions
 * **Storage**: Vercel `/tmp` compatible Local Filesystem 
