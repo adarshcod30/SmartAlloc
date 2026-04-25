@@ -8,9 +8,15 @@
   <p><i>A 7-agent AI pipeline that watches enterprise cloud, compute, and personnel resources 24/7, catches inefficiencies before bottlenecks occur, and acts autonomously — with a human always in the loop for high-stakes decisions.</i></p>
 
   <br />
-  <a href="https://smart-alloc.vercel.app/">
-    <img src="https://img.shields.io/badge/LIVE_DEMO-VIEW_DASHBOARD-813DEF?style=for-the-badge&logo=rocket" alt="Live Demo" />
-  </a>
+  <div style="display: flex; justify-content: center; gap: 10px; margin-bottom: 10px;">
+    <a href="https://smartalloc-369307850248.us-central1.run.app/">
+      <img src="https://img.shields.io/badge/Google_Cloud_Run-LIVE_DEMO-4285F4?style=for-the-badge&logo=googlecloud&logoColor=white" alt="Google Cloud Demo" />
+    </a>
+    <a href="https://smart-alloc.vercel.app/">
+      <img src="https://img.shields.io/badge/Vercel-LIVE_DEMO-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel Demo" />
+    </a>
+  </div>
+  <p><b>☁️ Deployed on Google Cloud:</b> <a href="https://smartalloc-369307850248.us-central1.run.app/">smartalloc-369307850248.us-central1.run.app</a></p>
   <p><b>🚀 Deployed on Vercel:</b> <a href="https://smart-alloc.vercel.app/">smart-alloc.vercel.app</a></p>
   <br />
 
@@ -511,6 +517,36 @@ TOTAL ANNUAL ENTERPRISE VALUE DELIVERED: $3,270,000 Return
 
 > 📸 **Compute Efficiency Protected:** Real-time demonstration of value creation.
 > ![Financial Impact Engine](docs/screenshots/impact.png)
+
+---
+
+## ☁️ Google Cloud Deployment (Recommended)
+
+SmartAlloc is architected to seamlessly deploy to **Google Cloud Run** using Google's serverless container infrastructure. The system uses Cloud Buildpacks to auto-detect Next.js 14 and containerize the application without requiring a `Dockerfile`.
+
+### 1. Authenticate & Setup
+Ensure you have the `gcloud` CLI installed and authenticated:
+```bash
+gcloud auth login
+gcloud config set project YOUR_PROJECT_ID
+```
+
+### 2. Enable Services
+```bash
+gcloud services enable run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com
+```
+
+### 3. Deploy via Source
+Deploy directly from your terminal. Google Cloud will automatically build the Next.js container, provision Artifact Registry, and host the live service:
+```bash
+gcloud run deploy smartalloc \
+  --source . \
+  --region us-central1 \
+  --allow-unauthenticated \
+  --set-env-vars ^@^GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+Your application will be live at a `.run.app` URL immediately after the build completes.
 
 ---
 
