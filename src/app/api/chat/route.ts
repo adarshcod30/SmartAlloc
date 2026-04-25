@@ -24,7 +24,8 @@ User question: "${message}"`;
     try {
       const parsed = JSON.parse(reply);
       if (parsed.summary && parsed.reallocation_plan) {
-        let planText = "Plan:\nWe recommend a dynamic reallocation strategy.\n\n";
+        let planText = "[SYSTEM ALERT: The Google Gemini API is currently unavailable or the API key is missing. Re-routing to the offline Local Fallback Engine.]\n\n";
+        planText += "Plan:\nWe recommend a dynamic reallocation strategy.\n\n";
         planText += "Reasoning:\n" + parsed.summary + "\n\n";
         planText += "Proposed Actions:\n";
         parsed.reallocation_plan.forEach((a: any) => {
