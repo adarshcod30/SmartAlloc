@@ -18,8 +18,24 @@ User question: "${message}"`;
 
     const reply = await callGeminiText(prompt);
     
-    // Ensure no markdown asterisks leak out just in case
-    const textReply = reply.replace(/\*/g, '').replace(/#/g, '');
+    let textReply = reply;
+    
+    // Check if the response is JSON (which happens when the Gemini API fails and hits our local fallback engine)
+    try {
+      const parsed = JSON.parse(reply);
+      if (parsed.summary && parsed.reallocation_plan) {
+        let planText = "Plan:\nWe recommend a dynamic reallocation strategy.\n\n";
+        planText += "Reasoning:\n" + parsed.summary + "\n\n";
+        planText += "Proposed Actions:\n";
+        parsed.reallocation_plan.forEach((a: any) => {
+          planText += `• ${a.action_type.toUpperCase()} for ${a.target_id} (Risk mitigation priority: ${a.priority})\n`;
+        });
+        textReply = planText;
+      }
+    } catch {
+      // It's standard text from Gemini, leave it alone.
+      textReply = textReply.replace(/\*/g, '').replace(/#/g, '');
+    }
 
     return NextResponse.json({ reply: textReply });
   } catch (error: any) {
