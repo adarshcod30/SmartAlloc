@@ -1,5 +1,3 @@
----
-
 <div align="center">
   <h1>⚡ SmartAlloc</h1>
   <p><b>Enterprise Resource Intelligence & Autonomous Allocation</b></p>
