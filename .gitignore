@@ -21,10 +21,3 @@ Thumbs.db
 
 # Logs
 *.log
-
-# local agent and editor files, never committed
-.claude/
-.claude.json
-CLAUDE.local.md
-CLAUDE.md
-AGENTS.md
